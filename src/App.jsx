@@ -10,20 +10,28 @@ import Blog from './pages/Blog'
 import BlogsArtical from './pages/BlogsArtical'
 import Job from './pages/Job'
 import Healthcare from './pages/Healthcare'
+
 function App() {
   return (
     <Router>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/recruiters-services" element={<Recruiter />} />
-        <Route path="/employee-services" element={<Employee/>} />
-        <Route path="/recruiters" element={<Gprecuirter />} />
-        <Route path="/blogs" element={<Blog/>}/>
-        <Route path="/blogs/:slug/" element={<BlogsArtical />} />
-        <Route path="/job-search" element={<Job/>}/>
-        <Route path="/healthcare" element={<Healthcare/>}/>
-      </Routes>
+      {/* Ensures Navbar stays relative and doesn't get overlapped */}
+      <div className="relative w-full z-50">
+        <Nav />
+      </div>
+
+      <main className="w-full">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recruiters-services" element={<Recruiter />} />
+          <Route path="/employee-services" element={<Employee/>} />
+          <Route path="/recruiters" element={<Gprecuirter />} />
+          <Route path="/blogs" element={<Blog/>}/>
+          <Route path="/blogs/:slug/" element={<BlogsArtical />} />
+          <Route path="/job-search" element={<Job/>}/>
+          <Route path="/healthcare" element={<Healthcare/>}/>
+        </Routes>
+      </main>
+
       <Footer/>
     </Router>
   )

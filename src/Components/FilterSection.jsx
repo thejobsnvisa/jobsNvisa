@@ -99,8 +99,8 @@ export default function FilterSection() {
 
       {/* Dropdown Filters (Toggled when Filters button is clicked) */}
       {showFilters && (
-          <div className="space-y-3 pt-1 w-full mt-4 sm:mt-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5">
+          <div className="space-y-3 pt-1 xl:w-[1280px] mt-4 sm:mt-6 xl:ml-[-230px] ">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 text-[16px]">
             {/* Category Dropdown */}
             <select
               value={filters.category}

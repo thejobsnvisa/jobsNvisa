@@ -131,7 +131,7 @@ const Healthcare = () => {
     <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
       {/* Header Banner */}
       <div className="flex flex-col items-center text-center mt-6 xl:mt-24">
-        <div className="relative w-full max-w-[1350px] mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-6 mt-20 xl:mt-8 md:mt-14 md:px-12 py-8 md:py-10">
+        <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-6 mt-20 xl:mt-8 md:mt-14 md:px-12 py-8 md:py-10">
           {/* Decorative Vector 1 */}
           <img
             src={w1}

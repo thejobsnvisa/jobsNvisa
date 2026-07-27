@@ -207,10 +207,9 @@ const BlogsArticle = () => {
         <meta name="publisher" content="Growmore Immigration" />
         <meta name="robots" content="index, follow" />
       </Helmet>
-
-      <div className="min-h-screen bg-white font-jakarta text-[#042325]">
-        {/* HEADER */}
-        <div className="relative w-full max-w-[1300px] mt-28 md:mt-30 lg:mt-32 md:mt-40 mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-4 sm:px-6 md:px-12 py-8 md:py-10">
+    <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
+      <div className="flex flex-col items-center text-center mt-6 xl:mt-24">
+        <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-6 mt-20 xl:mt-8 md:mt-14 md:px-12 py-8 md:py-10">
           <img
             src={w1}
             alt="Background Decorative Vector"
@@ -318,6 +317,7 @@ const BlogsArticle = () => {
             )}
         </section>
       </div>
+      </section>
     </>
   );
 };

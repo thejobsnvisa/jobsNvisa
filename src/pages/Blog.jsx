@@ -1,7 +1,7 @@
 import w1 from "../assets/w1.png";
 import w2 from "../assets/Vector1.svg";
 import BlogStep from "../Components/BlogStep";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
   const url = "https://jobsnvisa.com.au/";

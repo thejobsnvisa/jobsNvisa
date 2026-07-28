@@ -179,7 +179,7 @@ const BlogsArticle = () => {
         <meta name="description" content={articleDesc} />
         <link
           rel="canonical"
-          href={`https://www.growmore.one/blogs/${slug}/`}
+          href={`https://jobsnvisa.com.au/blogs/${slug}/`}
         />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={articleTitle} />
@@ -187,7 +187,7 @@ const BlogsArticle = () => {
         {article?.image && (
           <meta
             property="og:image"
-            content={`https://www.growmore.one${article.image}`}
+            content={`https://jobsnvisa.com.au${article.image}`}
           />
         )}
         <meta property="og:image:width" content="1200" />
@@ -197,14 +197,14 @@ const BlogsArticle = () => {
         {article?.image && (
           <meta
             name="twitter:image"
-            content={`https://www.growmore.one${article.image}`}
+            content={`https://jobsnvisa.com.au${article.image}`}
           />
         )}
         <meta
           property="og:url"
-          content={`https://www.growmore.one/blogs/${slug}/`}
+          content={`https://jobsnvisa.com.au/blogs/${slug}/`}
         />
-        <meta name="publisher" content="Growmore Immigration" />
+        <meta name="publisher" content="Jobs N Visa" />
         <meta name="robots" content="index, follow" />
       </Helmet>
     <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">

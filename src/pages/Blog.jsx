@@ -1,9 +1,37 @@
 import w1 from "../assets/w1.png";
 import w2 from "../assets/Vector1.svg";
 import BlogStep from "../Components/BlogStep";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
+  const url = "https://jobsnvisa.com.au/";
   return (
+      <>
+      <Helmet>
+                  <title>Blogs | Jobs N Visa</title>
+          
+                  <meta
+                    name="description"
+                    content="Stay updated with the latest news and insights on Australian migration, jobs, and visa processes."
+                  />
+          
+                  {/* ✅ Canonical for homepage */}
+                  <link rel="canonical" href={url} />
+          
+                  {/* ✅ OG */}
+                  <meta
+                    property="og:title"
+                    content="Blogs | Jobs N Visa"
+                  />
+                  <meta
+                    property="og:description"
+                    content="Stay updated with the latest news and insights on Australian migration, jobs, and visa processes."
+                  />
+                  <meta property="og:url" content={url} />
+                  <meta property="og:image" content="https://jobsnvisa.com.au/assets/d1.png" />
+                  <meta property="og:image:height" content="630" />
+                  <meta property="og:image:width" content="630" />
+                </Helmet>
       <div>
           <section className="max-w-[1440px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
             <div className="flex flex-col items-center text-center mt-24 lg:mt-24">
@@ -42,6 +70,7 @@ const Blog = () => {
                    <BlogStep/>
               </section>
               </div>
+      </>
   )
 }
 

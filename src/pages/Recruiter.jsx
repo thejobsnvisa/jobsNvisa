@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import r1 from "../assets/recruiter.png";
 import w1 from "../assets/w1.png";
 import w2 from "../assets/Vector1.svg";
@@ -29,6 +30,7 @@ import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
 
 const Recruiter = () => {
+  const url = "https://jobsnvisa.com.au/";
   const payrollCards = [
     {
       icon: c1,
@@ -117,7 +119,33 @@ const Recruiter = () => {
   ];
 
   return (
-    <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
+    <>
+      <Helmet>
+        <title>Recruiter Services | Jobs N Visa</title>
+
+        <meta
+          name="description"
+          content="Discover Jobs N Visa's Recruiter Services for candidate screening, vetting, onboarding, and retention support. Hire skilled employees with confidence."
+        />
+
+        {/* ✅ Canonical for homepage */}
+        <link rel="canonical" href={url} />
+
+        {/* ✅ OG */}
+        <meta
+          property="og:title"
+          content="Recruiter Services | Jobs N Visa"
+        />
+        <meta
+          property="og:description"
+          content="Discover Jobs N Visa's Recruiter Services for candidate screening, vetting, onboarding, and retention support. Hire skilled employees with confidence."
+        />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content="https://jobsnvisa.com.au/assets/recruiter.png" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:width" content="630" />
+      </Helmet>
+      <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
       <div className="flex flex-col items-center text-center mt-24 lg:mt-24">
         {/* Hero Section */}
         <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-6 md:px-12 py-8 md:py-10">
@@ -564,6 +592,7 @@ const Recruiter = () => {
 
       <GetInTouch />
     </section>
+  </>
   );
 };
 

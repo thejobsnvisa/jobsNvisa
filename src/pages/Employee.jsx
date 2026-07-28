@@ -25,7 +25,9 @@ import c6 from "../assets/c6.svg";
 import job from "../assets/job.svg";
 import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
+import { Helmet } from "react-helmet-async";
 const Employee = () => {
+  const url = "https://jobsnvisa.com.au/";
   const payrollCards = [
     {
       icon: c1,
@@ -99,6 +101,32 @@ const Employee = () => {
   const [selectedIcon, setSelectedIcon] = useState(undefined);
 
   return (
+    <>
+    <Helmet>
+            <title>Employee Services | Jobs N Visa</title>
+    
+            <meta
+              name="description"
+              content="Discover Jobs N Visa's Employee Services for career growth, job opportunities, and visa guidance in Australia."
+            />
+    
+            {/* ✅ Canonical for homepage */}
+            <link rel="canonical" href={url} />
+    
+            {/* ✅ OG */}
+            <meta
+              property="og:title"
+              content="Employee Services | Jobs N Visa"
+            />
+            <meta
+              property="og:description"
+              content="Discover Jobs N Visa's Employee Services for career growth, job opportunities, and visa guidance in Australia."
+            />
+            <meta property="og:url" content={url} />
+            <meta property="og:image" content="https://jobsnvisa.com.au/assets/r4.png" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:width" content="630" />
+          </Helmet>
     <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
       <div className="flex flex-col items-center text-center mt-24 lg:mt-24">
         {/* Breadcrumb */}
@@ -556,6 +584,7 @@ const Employee = () => {
 
       <GetInTouch />
     </section>
+    </>
   );
 };
 

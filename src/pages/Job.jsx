@@ -1,8 +1,37 @@
 import w1 from "../assets/w1.png";
 import w2 from "../assets/Vector1.svg";
+import { Helmet } from "react-helmet-async";
+
 
 const Job = () => {
+  const url = "https://jobsnvisa.com.au/";
   return (
+    <>
+    <Helmet>
+            <title>Job Opportunities | Jobs N Visa</title>
+    
+            <meta
+              name="description"
+              content="Discover Jobs N Visa's job opportunities in Australia. Find the best career prospects in the healthcare industry."
+            />
+    
+            {/* ✅ Canonical for homepage */}
+            <link rel="canonical" href={url} />
+    
+            {/* ✅ OG */}
+            <meta
+              property="og:title"
+              content="Job Opportunities | Jobs N Visa"
+            />
+            <meta
+              property="og:description"
+              content="Discover Jobs N Visa's job opportunities in Australia. Find the best career prospects in the healthcare industry."
+            />
+            <meta property="og:url" content={url} />
+            <meta property="og:image" content="https://jobsnvisa.com.au/assets/r2.png" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:width" content="630" />
+          </Helmet>
     <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
       <div className="flex flex-col items-center text-center mt-24 lg:mt-24">
         {/* Breadcrumb */}
@@ -51,6 +80,7 @@ const Job = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -6,8 +6,12 @@ import { LuClock3, LuMapPin, LuBriefcase } from "react-icons/lu";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RiUserSettingsLine } from "react-icons/ri";
 import FilterSection from "../Components/FilterSection";
+import { Helmet } from "react-helmet-async";
+
 
 const Healthcare = () => {
+  const url = "https://jobsnvisa.com.au/";
+
   const healthcareJobs = [
     {
       image: d1,
@@ -128,6 +132,32 @@ const Healthcare = () => {
   ];
 
   return (
+    <>
+     <Helmet>
+            <title>Healthcare Jobs in Australia | Jobs N Visa</title>
+    
+            <meta
+              name="description"
+              content="Explore healthcare job opportunities in Australia with Jobs N Visa. Find roles for nurses, lab technologists, and other healthcare professionals."
+            />
+    
+            {/* ✅ Canonical for homepage */}
+            <link rel="canonical" href={url} />
+    
+            {/* ✅ OG */}
+            <meta
+              property="og:title"
+              content="Healthcare Jobs in Australia | Jobs N Visa"
+            />
+            <meta
+              property="og:description"
+              content="Explore healthcare job opportunities in Australia with Jobs N Visa. Find roles for nurses, lab technologists, and other healthcare professionals."
+            />
+            <meta property="og:url" content={url} />
+            <meta property="og:image" content="https://jobsnvisa.com.au/assets/d1.png" />
+            <meta property="og:image:height" content="630" />
+            <meta property="og:image:width" content="630" />
+          </Helmet>
     <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
       {/* Header Banner */}
       <div className="flex flex-col items-center text-center mt-6 xl:mt-24">
@@ -414,6 +444,7 @@ const Healthcare = () => {
         ))}
       </div>
     </section>
+    </>
   );
 };
 

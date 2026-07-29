@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
           </div>
         </div>
         <div className="w-full max-w-[900px] mx-auto mt-12 ml-64">
-          <div className="bg-white rounded-[40px]  bg-slate-300 md:rounded-[70px] p-6 md:p-10 shadow-[0px_4px_15px_2px_#93939340]">
+          <div className="bg-slate-300 rounded-[40px]  bg-slate-300 md:rounded-[70px] p-6 md:p-10 shadow-[0px_4px_15px_2px_#93939340]">
             <h2 className="text-center text-green-700 font-bold text-[20px] md:text-[16px]">
               Privacy Policy
             </h2>

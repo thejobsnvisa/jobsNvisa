@@ -84,7 +84,7 @@ const HelpCenter = () => {
                   Our support team is here to assist you
                 </p>
                 <div className="w-full max-w-[1138px] mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[320px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <div className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center">
                       <a href="mailto:info@jobsnvisa.com.au">
                         <img
@@ -111,7 +111,7 @@ const HelpCenter = () => {
                       Send Mail
                     </a>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[320px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <a
                       href="tel:+61387643335"
                       className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center"
@@ -136,7 +136,7 @@ const HelpCenter = () => {
                       Call Now
                     </a>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[320px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <div className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center">
                       <HiOutlineChat className="h-[120px] w-[120px] font-bold text-green-800" />
                     </div>
@@ -154,7 +154,7 @@ const HelpCenter = () => {
                     </p>
                     <button
                       type="button"
-                      className="mt-6 inline-flex items-center justify-center rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-300 px-6 py-2 text-sm font-semibold text-green-800 shadow-lg "
+                      className="mt-12 inline-flex items-center justify-center rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-300 px-6 py-2 text-sm font-semibold text-green-800 shadow-lg "
                     >
                       Start Chat
                     </button>

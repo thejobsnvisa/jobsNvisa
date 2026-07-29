@@ -18,10 +18,10 @@ const GetInTouch = () => {
             Get In Touch
           </h2>
           <div className="w-full max-w-[1138px] mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-            <div className="bg-white/80 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] sm:min-h-[220px] lg:w-[300px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+            <div className="bg-white/80 backdrop-blur-md rounded-[20px] relative w-full min-h-[180px] sm:min-h-[220px] lg:w-[300px] p-6 sm:p-8 shadow-xl text-center mx-auto">
               <div className="absolute -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[18px] p-[8px] flex items-start justify-center">
                 <a href="mailto:info@jobsnvisa.com.au">
-                  <img src={emailIcon} alt="email" className="h-10 w-6 sm:h-5 sm:w-5" />
+                  <img src={emailIcon} alt="email" className="h-58 w-58" />
                 </a>
               </div>
               <h3 className="text-xl text-orange-600 mb-3 mt-6">Email</h3>
@@ -30,7 +30,7 @@ const GetInTouch = () => {
             </div>
             <div className="bg-white/80 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] sm:min-h-[220px] lg:w-[300px] p-6 sm:p-8 shadow-xl text-center mx-auto">
               <a href="tel:+61387643335" className="absolute -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[18px] p-[8px] flex items-start justify-center">
-                <img src={phoneIcon} alt="phone" className="h-8 w-6 sm:h-5 sm:w-5" />
+                <img src={phoneIcon} alt="phone" className="h-58 w-58" />
               </a>
               <h3 className="text-xl text-orange-600 mb-3 mt-6">Phone</h3>
               <p className="text-green-900 font-bold text-[16px]">+61 3 8764 3335</p>
@@ -46,7 +46,7 @@ const GetInTouch = () => {
                 rel="noreferrer"
                 className="absolute -top-6  -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[18px] p-[8px] flex items-start justify-center"
               >
-                <img src={locationIcon} alt="location" className="h-8 w-6 sm:h-5 sm:w-5" />
+                <img src={locationIcon} alt="location" className="h-58 w-58" />
               </a>
               <h3 className="text-xl text-orange-600 mb-3 mt-6">Locations</h3>
               <p className="text-green-900 font-bold text-[16px]">

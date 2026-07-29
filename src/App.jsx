@@ -13,6 +13,7 @@ import Healthcare from './pages/Healthcare'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import CookiePolicy from './pages/CookiePolicy'
 import Term from './pages/Term'
+import HelpCenter from './pages/HelpCenter'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
           <Route path="/cookie-policy" element={<CookiePolicy/>}/>
           <Route path="/terms" element={<Term/>}/>
+          <Route path="/help-center" element={<HelpCenter/>}/>
         </Routes>
       </main>
 

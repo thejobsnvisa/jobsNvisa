@@ -18,7 +18,6 @@ const Healthcare = () => {
   const url = "https://jobsnvisa.com.au/";
 
   const healthcareJobs = [
-
     {
       image: d1,
       category: "Allied Health",
@@ -44,7 +43,11 @@ const Healthcare = () => {
         "Dysphagia Management",
         "Patient Care",
       ],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369xpA",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -75,7 +78,11 @@ const Healthcare = () => {
         "Patient Care",
         "Clinical Reasoning",
       ],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369uYG",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -101,7 +108,11 @@ const Healthcare = () => {
         "First Aid & CPR",
       ],
       skills: ["Personal Care", "NDIS", "Community Support", "Communication"],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369JBN",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -127,7 +138,11 @@ const Healthcare = () => {
         "Driver Licence (Preferred)",
       ],
       skills: ["Case Management", "NDIS", "Coordination", "Communication"],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369JBN",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -158,7 +173,11 @@ const Healthcare = () => {
         "Patient Assessment",
         "Exercise Prescription",
       ],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369JBN",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -192,7 +211,7 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire"
+        "Apply or Enquire",
       ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369JBN",
       contactEmail: "info@jobsnvisa.com.au",
@@ -224,7 +243,11 @@ const Healthcare = () => {
         "Patient Management",
         "Chronic Disease Care",
       ],
-      highlights: ["View Role Details", "Check Eligibility", "Apply or Enquire"],
+      highlights: [
+        "View Role Details",
+        "Check Eligibility",
+        "Apply or Enquire",
+      ],
       applyUrl: "https://recruitcrm.io/apply/17679308678410124369JBN",
       contactEmail: "info@jobsnvisa.com.au",
       contactPhone: "+61387643334",
@@ -422,11 +445,11 @@ const Healthcare = () => {
                   className="w-full h-[40px] bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 font-medium shadow-sm focus:outline-none focus:border-emerald-500"
                 >
                   <option value="All Categories">All Categories</option>
-                  <option value="Allied Health">
-                    Allied Health
+                  <option value="Allied Health">Allied Health</option>
+                  <option value="Support & Community">
+                    Support & Community
                   </option>
-                  <option value="Support & Community">Support & Community</option>
-                   <option value="Doctors & Specialists">
+                  <option value="Doctors & Specialists">
                     Doctors & Specialists
                   </option>
                 </select>
@@ -646,25 +669,13 @@ const Healthcare = () => {
                   </div>
 
                   {/* Skills Tags */}
-                  <div
-                    className="
-                  /* Mobile / Tablet Styles */
-                  w-full flex flex-wrap justify-center xl:justify-between gap-2 mt-6 xl:mt-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[850px] xl:mt-[25px] xl:ml-[30px] xl:gap-1  xl:text-[14px] text-green-700 font-semibold
-                "
-                  >
+                  <div className="w-full flex gap-3 flex-wrap mt-6 xl:mt-10 xl:ml-[30px]">
                     {job.skills.map((skill, i) => (
                       <div
                         key={i}
-                        className="
-                      /* Mobile / Tablet Styles */
-                      px-4 py-2 bg-slate-200 rounded-[14px] flex items-center justify-center
-                      /* Desktop Styles (Unchanged) */
-                      xl:w-[205px] xl:h-[48px] xl:px-5 xl:py-2
-                    "
+                        className="flex-1 h-[45px] bg-slate-200 rounded-[14px] flex items-center justify-center"
                       >
-                        <p className="text-[14px] xl:text-[16px] text-green-700 font-semibold text-center xl:w-[205px]">
+                        <p className="text-[15px] text-green-700 font-semibold text-center">
                           {skill}
                         </p>
                       </div>
@@ -675,22 +686,26 @@ const Healthcare = () => {
                   <div
                     className="
                   /* Mobile / Tablet Styles */
-                  w-full flex flex-col sm:flex-row justify-center xl:justify-between gap-3 sm:gap-4 mt-6 xl:mt-0
+                  w-full flex flex-col sm:flex-row justify-center xl:justify-between gap-4 sm:gap-4 mt-6 xl:mt-0
                   /* Desktop Styles (Unchanged) */
                   xl:w-[750px] xl:mt-[25px] xl:ml-[28px] xl:gap-3
                 "
                   >
                     {/* Highlight 1 */}
                     <div
-                      onClick={() => alert(`${job.title}\n\nRole Details:\n${job.description}\n\nCategory: ${job.category}\nLocation: ${job.location}\nExperience: ${job.experience}`)}
+                      onClick={() =>
+                        alert(
+                          `${job.title}\n\nRole Details:\n${job.description}\n\nCategory: ${job.category}\nLocation: ${job.location}\nExperience: ${job.experience}`,
+                        )
+                      }
                       className="
                     /* Mobile / Tablet Styles */
                     w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-700 hover:bg-green-100 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
                     /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:px-8
+                    xl:w-[250px] xl:px-8 xl:gap-1
                   "
                     >
-                      <RiUserSettingsLine className="w-6 h-6 xl:w-10 xl:h-8 text-white group-hover:text-green-900 flex-shrink-0" />
+                      <RiUserSettingsLine className="w-6 h-6 xl:w-10 xl:h-6 text-white group-hover:text-green-900 flex-shrink-0" />
                       <p className="text-[14px] xl:text-[16px] text-white group-hover:text-green-900 font-bold truncate xl:w-[180px]">
                         {job.highlights[0]}
                       </p>
@@ -698,12 +713,16 @@ const Healthcare = () => {
 
                     {/* Highlight 2 */}
                     <div
-                      onClick={() => alert(`Eligibility Check for ${job.title}\n\nRequired Qualifications:\n${job.qualifications.join('\n')}\n\nRequired Skills:\n${job.skills.join('\n')}`)}
+                      onClick={() =>
+                        alert(
+                          `Eligibility Check for ${job.title}\n\nRequired Qualifications:\n${job.qualifications.join("\n")}\n\nRequired Skills:\n${job.skills.join("\n")}`,
+                        )
+                      }
                       className="
                     /* Mobile / Tablet Styles */
                     w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-100 hover:bg-green-700 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
                     /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:gap-1 xl:px-8
+                    xl:w-[250px] xl:gap-3 xl:px-8
                   "
                     >
                       <FaRegCheckCircle className="w-5 h-5 xl:w-6 xl:h-6 text-green-900 group-hover:text-white flex-shrink-0" />
@@ -717,26 +736,32 @@ const Healthcare = () => {
                       onClick={() => {
                         const msg = `Apply for ${job.title}\n\nURL: ${job.applyUrl}\nEmail: ${job.contactEmail}\nPhone: ${job.contactPhone}\n\nClick OK to open the application form`;
                         if (window.confirm(msg)) {
-                          window.open(job.applyUrl, "_blank", "noopener,noreferrer");
+                          window.open(
+                            job.applyUrl,
+                            "_blank",
+                            "noopener,noreferrer",
+                          );
                         }
                       }}
                       onMouseEnter={(e) => {
-                        const img = e.currentTarget.querySelector('img');
+                        const img = e.currentTarget.querySelector("img");
                         if (img) {
-                          img.style.filter = "brightness(0) saturate(100%) invert(100%)";
+                          img.style.filter =
+                            "brightness(0) saturate(100%) invert(100%)";
                         }
                       }}
                       onMouseLeave={(e) => {
-                        const img = e.currentTarget.querySelector('img');
+                        const img = e.currentTarget.querySelector("img");
                         if (img) {
-                          img.style.filter = "brightness(0) saturate(100%) invert(20%) sepia(34%) saturate(1320%) hue-rotate(96deg) brightness(92%) contrast(94%)";
+                          img.style.filter =
+                            "brightness(0) saturate(100%) invert(20%) sepia(34%) saturate(1320%) hue-rotate(96deg) brightness(92%) contrast(94%)";
                         }
                       }}
                       className="
                     /* Mobile / Tablet Styles */
                     w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-100 hover:bg-green-700 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
                     /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:gap-1 xl:px-6
+                    xl:w-[250px] xl:gap-3 xl:px-6
                   "
                     >
                       <img
@@ -748,7 +773,7 @@ const Healthcare = () => {
                             "brightness(0) saturate(100%) invert(20%) sepia(34%) saturate(1320%) hue-rotate(96deg) brightness(92%) contrast(94%)",
                         }}
                       />
-                         <span className="text-[14px] xl:text-[16px] group-hover:text-white text-green-900 font-bold truncate xl:w-[180px]">
+                      <span className="text-[14px] xl:text-[16px] group-hover:text-white text-green-900 font-bold truncate xl:w-[180px]">
                         {job.highlights[2]}
                       </span>
                     </div>

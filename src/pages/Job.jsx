@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const Job = () => {
-  const url = "https://jobsnvisa.com.au/";
+  const url = "https://jobsnvisa.com.au/job-search";
   return (
     <>
     <Helmet>

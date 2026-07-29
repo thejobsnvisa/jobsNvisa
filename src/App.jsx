@@ -10,6 +10,9 @@ import Blog from './pages/Blog'
 import BlogsArtical from './pages/BlogsArtical'
 import Job from './pages/Job'
 import Healthcare from './pages/Healthcare'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import CookiePolicy from './pages/CookiePolicy'
+import Term from './pages/Term'
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
           <Route path="/blogs/:slug/" element={<BlogsArtical />} />
           <Route path="/job-search" element={<Job/>}/>
           <Route path="/healthcare" element={<Healthcare/>}/>
+          <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
+          <Route path="/cookie-policy" element={<CookiePolicy/>}/>
+          <Route path="/terms" element={<Term/>}/>
         </Routes>
       </main>
 

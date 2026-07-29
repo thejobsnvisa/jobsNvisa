@@ -13,7 +13,7 @@ import GPRecruitmentSolutions from "../Components/GPRecruitmentSolutions";
 import { Helmet } from "react-helmet-async";
 
 const Gprecuirter = () => {
-  const url = "https://jobsnvisa.com.au/";
+  const url = "https://jobsnvisa.com.au/recruiters";
   const cards = [
     {
       icon: h1,

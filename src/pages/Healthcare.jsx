@@ -15,7 +15,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const Healthcare = () => {
-  const url = "https://jobsnvisa.com.au/";
+  const url = "https://jobsnvisa.com.au/healthcare";
 
   const healthcareJobs = [
     {

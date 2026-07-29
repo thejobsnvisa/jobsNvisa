@@ -4,7 +4,7 @@ import BlogStep from "../Components/BlogStep";
 import { Helmet } from "react-helmet-async";
 
 const Blog = () => {
-  const url = "https://jobsnvisa.com.au/";
+  const url = "https://jobsnvisa.com.au/blogs";
   return (
       <>
       <Helmet>

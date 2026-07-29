@@ -30,7 +30,7 @@ import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
 
 const Recruiter = () => {
-  const url = "https://jobsnvisa.com.au/";
+  const url = "https://jobsnvisa.com.au/recruiters-services";
   const payrollCards = [
     {
       icon: c1,

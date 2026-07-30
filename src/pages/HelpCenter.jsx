@@ -4,6 +4,9 @@ import { Helmet } from "react-helmet-async";
 import emailIcon from "../assets/email.svg";
 import phoneIcon from "../assets/Phone.svg";
 import background from "../assets/background.jpg";
+import image6 from "../assets/image6.png";
+import image7 from "../assets/image7.png";
+import image8 from "../assets/image8.png";
 import { HiOutlineChat } from "react-icons/hi";
 
 const HelpCenter = () => {
@@ -68,6 +71,81 @@ const HelpCenter = () => {
               />
             </div>
           </div>
+          <div className="w-full max-w-[1280px]  mx-auto mt-[20px] px-4 sm:px-6 ">
+           <div className="relative z-10 flex flex-col md:flex-wrap lg:flex-nowrap md:flex-row items-stretch justify-center gap-6 px-2 py-6 sm:px-4 sm:py-8 md:px-6 md:py-10 lg:py-14">
+              <div className="w-full max-w-[380px] md:max-w-[460px] lg:max-w-[380px] min-h-[200px] rounded-[30px] bg-[#F5FAF7] shadow-[inset_0_0_24px_#0E89414F] p-6 flex flex-col justify-between mx-auto">
+                <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left">
+                  <img
+                    src={image6}
+                    alt="Application Process"
+                    className="w-[132px] h-[112px] shrink-0"
+                  />
+                  <div className="mt-4 md:mt-0 md:ml-4">
+                    <p className="text-[18px] font-semibold text-green-700">
+                      Application Process
+                    </p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      Step-by-step guide for applying for jobs through JobsNVisa
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  className="mt-6 text-slate-500 font-semibold text-base inline-flex items-center gap-1 md:ml-[95px]"
+                >
+                  Learn More →
+                </a>
+              </div>
+              <div className="w-full max-w-[380px] md:max-w-[460px] min-h-[200px] rounded-[30px] bg-[#F5FAF7] shadow-[inset_0_0_24px_#0E89414F] p-6 flex flex-col justify-between mx-auto">
+                <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left">
+                  <img
+                    src={image7}
+                    alt="Visa Requirements"
+                    className="w-[132px] h-[112px] shrink-0"
+                  />
+                  <div className="mt-4 md:mt-0 md:ml-4">
+                    <p className="text-[18px] font-semibold text-green-700">
+                      Visa Requirements
+                    </p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      Understanding visa types and requirements for working in
+                      Australia
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  className="mt-6 text-slate-500 font-semibold text-base inline-flex items-center gap-1 md:ml-[100px]"
+                >
+                  Learn More →
+                </a>
+              </div>
+              <div className="w-full max-w-[380px] md:max-w-[460px] min-h-[200px] rounded-[30px] bg-[#F5FAF7] shadow-[inset_0_0_24px_#0E89414F] p-6 flex flex-col justify-between mx-auto">
+                <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left">
+                  <img
+                    src={image8}
+                    alt="Get Expert Support"
+                    className="w-[132px] h-[112px] shrink-0"
+                  />
+                  <div className="mt-4 md:mt-0 md:ml-4">
+                    <p className="text-[18px] font-semibold text-green-700">
+                      Get Expert Support
+                    </p>
+                    <p className="text-sm text-gray-600 mt-3">
+                      Get in touch with our support team for personalized
+                      assistance
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#"
+                  className="mt-6 text-slate-500 font-semibold text-base inline-flex items-center gap-1 md:ml-[100px]"
+                >
+                  Learn More →
+                </a>
+              </div>
+            </div>
+          </div>
           <div className="w-full flex justify-center px-4 sm:px-6 pt-10 pb-10">
             <div
               className="relative w-full max-w-[1300px] min-h-[520px] rounded-tl-[40px] rounded-bl-[40px] rounded-tr-[40px] lg:rounded-tl-[80px] lg:rounded-tr-[80px] overflow-hidden bg-cover bg-center"
@@ -84,7 +162,7 @@ const HelpCenter = () => {
                   Our support team is here to assist you
                 </p>
                 <div className="w-full max-w-[1138px] mx-auto grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[280px] xl:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <div className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center">
                       <a href="mailto:info@jobsnvisa.com.au">
                         <img
@@ -98,7 +176,7 @@ const HelpCenter = () => {
                     <p className="text-amber-950 font-semibold text-[15px] mb-2">
                       Send us your questions via email
                     </p>
-                    <p className="text-green-900 font-bold text-[16px]">
+                    <p className="text-green-900 font-bold text-[16px] md:text-[14px]">
                       info@jobsnvisa.com.au
                     </p>
                     <p className="text-green-700 mt-1">
@@ -111,7 +189,7 @@ const HelpCenter = () => {
                       Send Mail
                     </a>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[280px] xl:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <a
                       href="tel:+61387643335"
                       className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center"
@@ -136,7 +214,7 @@ const HelpCenter = () => {
                       Call Now
                     </a>
                   </div>
-                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
+                  <div className="bg-white/90 backdrop-blur-md rounded-[30px] relative w-full min-h-[180px] lg:w-[280px] xl:w-[335px] p-6 sm:p-8 shadow-xl text-center mx-auto">
                     <div className="absolute  -top-6 -translate-x-1/2 h-[48px] w-[48px] bg-green-200 rounded-[12px] p-[8px] flex items-center justify-center">
                       <HiOutlineChat className="h-[120px] w-[120px] font-bold text-green-800" />
                     </div>

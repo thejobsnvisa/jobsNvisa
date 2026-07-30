@@ -232,12 +232,14 @@ const HelpCenter = () => {
                     <p className="text-green-600 mt-1">
                       Average response: 2 mins
                     </p>
-                    <button
-                      type="button"
+                    <a
+                      href="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2026/01/06/02/20260106020029-OJAZF2JV.json"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="mt-12 inline-flex items-center justify-center rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-300 px-6 py-2 text-sm font-semibold text-green-800 shadow-lg "
                     >
                       Start Chat
-                    </button>
+                    </a>
                   </div>
                 </div>
               </div>

@@ -40,6 +40,15 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+            <div className="mt-6">
+              <Link
+                to="/brochures"
+                aria-label="Brochures"
+                className="inline-flex items-center justify-center rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-200 px-10 py-3 text-sm font-semibold text-green-800"
+              >
+                Brochures
+              </Link>
+            </div>
           </div>
 
           <div className="w-full sm:w-auto min-w-[180px]">

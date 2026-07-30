@@ -14,6 +14,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import CookiePolicy from './pages/CookiePolicy'
 import Term from './pages/Term'
 import HelpCenter from './pages/HelpCenter'
+import Brochures from './pages/Brochures'
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           <Route path="/cookie-policy" element={<CookiePolicy/>}/>
           <Route path="/terms" element={<Term/>}/>
           <Route path="/help-center" element={<HelpCenter/>}/>
+          <Route path="/brochures" element={<Brochures/>}/>
         </Routes>
       </main>
 

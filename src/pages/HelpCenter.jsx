@@ -8,6 +8,7 @@ import image6 from "../assets/image6.png";
 import image7 from "../assets/image7.png";
 import image8 from "../assets/image8.png";
 import { HiOutlineChat } from "react-icons/hi";
+import FAQSection from "../Components/FAQSection";
 
 const HelpCenter = () => {
   const url = "https://jobsnvisa.com.au/help-center";
@@ -146,6 +147,7 @@ const HelpCenter = () => {
               </div>
             </div>
           </div>
+          <FAQSection />
           <div className="w-full flex justify-center px-4 sm:px-6 pt-10 pb-10">
             <div
               className="relative w-full max-w-[1300px] min-h-[520px] rounded-tl-[40px] rounded-bl-[40px] rounded-tr-[40px] lg:rounded-tl-[80px] lg:rounded-tr-[80px] overflow-hidden bg-cover bg-center"

@@ -20,8 +20,6 @@ function App() {
   return (
     <Router basename="/jobsNvisa">
       <Nav />
-
-      <main className="w-full">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recruiters-services" element={<Recruiter />} />
@@ -40,7 +38,6 @@ function App() {
           {/* Fallback route */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </main>
 
       <Footer />
     </Router>

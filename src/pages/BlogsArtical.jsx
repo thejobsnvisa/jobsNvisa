@@ -91,13 +91,19 @@ const BlogsArticle = () => {
       />
     ),
     ul: ({ ...props }) => (
-      <ul className="pl-6 mb-4 list-disc space-y-2 text-[#333]" {...props} />
+      <ul
+        className="ml-12 mb-4 list-disc space-y-2 text-[#333] list-inside gap-3 text-justify "
+        {...props}
+      />
     ),
     ol: ({ ...props }) => (
-      <ol className="pl-6 mb-4 list-decimal space-y-2 text-[#333]" {...props} />
+      <ol
+        className="pl-8 mb-4 list-decimal space-y-2 text-[#333]"
+        {...props}
+      />
     ),
     li: ({ ...props }) => (
-      <li className="marker:text-[#28535B]" {...props} />
+      <li className="text-[#333] marker:text-[#28535B]" {...props} />
     ),
     strong: ({ ...props }) => (
       <strong className="font-semibold text-[#042325]" {...props} />

@@ -1,17 +1,16 @@
-## Opportunities for Overseas Workers in Australia 
----
-
-Australia has been creating significant opportunities for skilled overseas workers through its migration program for several years, and the country has allocated 132,240 places for the 2026–27 permanent migration program planning level. This reflects the Australian Government's ongoing focus on addressing workforce shortages by attracting qualified professionals across various industries, including healthcare, construction, engineering, hospitality, manufacturing, and aged care. 
-
-So, as an overseas worker, if you are planning to work in Australia, understanding the available employment pathways and preparing for Australian recruitment standards can significantly improve your chances of securing a job. 
-
-
 ## Why Australia Is the Top Destination for Work 
 ---
 
 Australia offers competitive salaries, strong workplace protections, excellent career growth opportunities, and a high standard of living. Here, skilled workers also get the advantage of clear employment laws, multicultural workplaces, and opportunities to progress towards long-term residency through eligible migration pathways. 
 
 Based on your occupation, qualifications, work experience, and English language ability, you can explore a range of Australian work migration pathways that help in building a successful future in Australia. 
+
+## Opportunities for Overseas Workers in Australia 
+---
+
+Australia has been creating significant opportunities for skilled overseas workers through its migration program for several years, and the country has allocated 132,240 places for the 2026–27 permanent migration program planning level. This reflects the Australian Government's ongoing focus on addressing workforce shortages by attracting qualified professionals across various industries, including healthcare, construction, engineering, hospitality, manufacturing, and aged care. 
+
+So, as an overseas worker, if you are planning to work in Australia, understanding the available employment pathways and preparing for Australian recruitment standards can significantly improve your chances of securing a job. 
 
 ## Australian Work Migration Pathways 
 ---

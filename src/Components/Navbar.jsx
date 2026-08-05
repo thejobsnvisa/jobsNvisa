@@ -21,8 +21,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav aria-label="Main navigation" className="w-full">
-      <div className="relative w-full min-h-[100px] px-6 lg:px-10 bg-green-100 rounded-bl-[40px] rounded-br-[40px] flex items-center justify-between lg:justify-center">
+    <nav
+      aria-label="Main navigation"
+      className="relative w-full min-h-[100px] px-6 lg:px-10 bg-green-100 rounded-bl-[40px] rounded-br-[40px] flex items-center justify-between lg:justify-center"
+    >
         {/* Logo */}
         <img
           src={logo}
@@ -148,7 +150,6 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      </div>
     </nav>
   );
 };

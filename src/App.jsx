@@ -37,9 +37,7 @@ function App() {
     <Router basename="/jobsNvisa">
       <RedirectHandler />
 
-      <div className="relative w-full z-50">
-        <Nav />
-      </div>
+      <Nav />
 
       <main className="w-full">
         <Routes>

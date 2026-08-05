@@ -1,5 +1,7 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom'
+import { useEffect } from 'react'
+import Nav from './Components/Nav'
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
 import Recruiter from './pages/Recruiter'
@@ -14,13 +16,30 @@ import CookiePolicy from './pages/CookiePolicy'
 import Term from './pages/Term'
 import HelpCenter from './pages/HelpCenter'
 import Brochures from './pages/Brochures'
-import Navbar from './Components/Navbar'
+
+// Handles deep-link URL restoration when reloaded on GitHub Pages
+function RedirectHandler() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.startsWith('?/')) {
+      const targetPath = location.search.slice(2).replace(/~and~/g, '&');
+      navigate(targetPath, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router basename="/jobsNvisa">
+      <RedirectHandler />
 
-      <Navbar />
+      <div className="relative w-full z-50">
+        <Nav />
+      </div>
 
       <main className="w-full">
         <Routes>

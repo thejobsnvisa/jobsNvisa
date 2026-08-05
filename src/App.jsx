@@ -1,13 +1,12 @@
 import './App.css'
-// import Nav from './Components/Nav'
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
 import Recruiter from './pages/Recruiter'
 import Employee from './pages/Employee'
 import Gprecuirter from './pages/Gprecuirter'
 import Blog from './pages/Blog'
-
 import BlogsArtical from './pages/BlogsArtical'
 import Job from './pages/Job'
 import Healthcare from './pages/Healthcare'
@@ -17,13 +16,25 @@ import Term from './pages/Term'
 import HelpCenter from './pages/HelpCenter'
 import Brochures from './pages/Brochures'
 
+// Restores deep-link paths sent from public/404.html
+function RedirectHandler() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.search.startsWith('?/')) {
+      const targetPath = location.search.slice(2).replace(/~and~/g, '&');
+      navigate(targetPath, { replace: true });
+    }
+  }, [location, navigate]);
+
+  return null;
+}
+
 function App() {
   return (
-   <Router basename="/jobsNvisa">
-      {/* Ensures Navbar stays relative and doesn't get overlapped */}
-      {/* <div className="relative w-full z-50">
-        <Nav />
-      </div> */}
+    <Router basename="/jobsNvisa">
+      <RedirectHandler />
 
       <main className="w-full">
         <Routes>
@@ -40,6 +51,9 @@ function App() {
           <Route path="/terms" element={<Term />} />
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/brochures" element={<Brochures />} />
+
+          {/* Catch-all redirect to homepage */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 

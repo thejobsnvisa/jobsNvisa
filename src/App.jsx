@@ -20,7 +20,7 @@ function App() {
   return (
     <Router basename="/jobsNvisa">
       <Nav />
-        <Routes>
+        <Routes basename="/jobsNvisa">
           <Route path="/" element={<Home />} />
           <Route path="/recruiters-services" element={<Recruiter />} />
           <Route path="/employee-services" element={<Employee />} />

@@ -1,6 +1,6 @@
 import './App.css'
 import Nav from './Components/Nav'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
 import Recruiter from './pages/Recruiter'
@@ -28,21 +28,24 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recruiters-services" element={<Recruiter />} />
-          <Route path="/employee-services" element={<Employee/>} />
+          <Route path="/employee-services" element={<Employee />} />
           <Route path="/recruiters" element={<Gprecuirter />} />
-          <Route path="/blogs" element={<Blog/>}/>
-          <Route path="/blogs/:slug/" element={<BlogsArtical />} />
-          <Route path="/job-search" element={<Job/>}/>
-          <Route path="/healthcare" element={<Healthcare/>}/>
-          <Route path="/privacy-policy" element={<PrivacyPolicy/>}/>
-          <Route path="/cookie-policy" element={<CookiePolicy/>}/>
-          <Route path="/terms" element={<Term/>}/>
-          <Route path="/help-center" element={<HelpCenter/>}/>
-          <Route path="/brochures" element={<Brochures/>}/>
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/blogs/:slug" element={<BlogsArtical />} />
+          <Route path="/job-search" element={<Job />} />
+          <Route path="/healthcare" element={<Healthcare />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/terms" element={<Term />} />
+          <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/brochures" element={<Brochures />} />
+
+          {/* Catch-all route: Redirects any unknown route or trailing slash mismatches back to Home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
-      <Footer/>
+      <Footer />
     </Router>
   )
 }

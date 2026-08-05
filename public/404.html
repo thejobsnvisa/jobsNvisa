@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>jobs n visa</title>
-
-  <script>
-    sessionStorage.redirect = location.pathname + location.search + location.hash;
-    location.replace("/");
-  </script>
-</head>
-<body>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <title>Jobs N Visa Australia</title>
+    <script type="text/javascript">
+      // Set pathSegmentsToKeep to 1 for GitHub Pages project repos (e.g. github.io/jobsNvisa)
+      var pathSegmentsToKeep = 1;
+      var l = window.location;
+      
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?p=' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
+    </script>
+  </head>
+  <body>
+  </body>
 </html>

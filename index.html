@@ -11,18 +11,20 @@
     <meta name="theme-color" content="#042325" />
     <title>Jobs N Visa Australia</title>
 
-   <script type="text/javascript">
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
-  </script>
+    <!-- Start Single Page Apps for GitHub Pages Redirect Handler -->
+    <script type="text/javascript">
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+    <!-- End Single Page Apps for GitHub Pages Redirect Handler -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,10 +45,11 @@
 
     <meta name="publisher" content="JobsNVisa" />
 
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/webp" href="/logo.webp" />
 
+    <!-- Google Analytics -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-DN7J3Q1XD8"
@@ -91,6 +94,7 @@
       fbq("track", "PageView");
     </script>
 
+    <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -99,16 +103,14 @@
         "url": "https://www.jobsnvisa.com.au/"
       }
     </script>
-    
-    <noscript>
-      <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2369429016802898&ev=PageView&noscript=1"/>
-    </noscript>
+
+    <!-- External Botpress Scripts -->
     <script src="https://cdn.botpress.cloud/webchat/v3.5/inject.js"></script>
     <script src="https://files.bpcontent.cloud/2026/01/06/02/20260106020029-2JRK8UXS.js" defer></script>
   </head>
 
   <body>
+    <!-- Google Tag Manager NoScript -->
     <noscript
       ><iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-5XP4GMDV"
@@ -118,6 +120,12 @@
       ></iframe
     ></noscript>
 
+    <!-- Facebook Pixel NoScript (Moved to <body> to resolve Vite parse error) -->
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2369429016802898&ev=PageView&noscript=1"/>
+    </noscript>
+
     <div id="root">
       <header style="display: none">
         <h1>Jobs N Visa Australia</h1>
@@ -126,7 +134,7 @@
         <p>Jobs N Visa Australia - Expert migration services for Australia</p>
       </main>
     </div>
-    <div id="root"></div>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

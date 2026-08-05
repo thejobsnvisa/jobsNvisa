@@ -35,7 +35,7 @@ function RedirectHandler() {
 
 function App() {
   return (
-   <Router basename={import.meta.env.BASE_URL}>
+   <Router basename="/jobsNvisa">
       <RedirectHandler />
       
       {/* Ensures Navbar stays relative and doesn't get overlapped */}

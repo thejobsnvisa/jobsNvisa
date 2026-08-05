@@ -1,6 +1,6 @@
 import './App.css'
 import Nav from './Components/Nav'
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
 import Recruiter from './pages/Recruiter'

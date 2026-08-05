@@ -1,133 +1,33 @@
-import d1 from "../assets/d1.png";
-import d2 from "../assets/d2.png";
-import d3 from "../assets/d3.png";
-import d4 from "../assets/d4.png";
-import d5 from "../assets/d5.png";
-import d6 from "../assets/d6.png";
-import d7 from "../assets/d7.png";
-import d8 from "../assets/d8.png";
+import d1 from "../assets/img4.png";
+import d2 from "../assets/img5.png";
+
 
 export const blogs = [
-  {
-    id: 1,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "Your Complete Guide to Australian Visa & PR Pathways",
-    description:
-      "Dedicated migration pathways for doctors, nurses, pharmacists, and allied health professionals in Australia.",
-    topic:"Migration to Australia",
-    metaTitle: "Subclass 491 Visa Guide: Step-by-Step Path to Australia PR",
-    metaDescription:
-      "Master the regional visa pathway. Learn how the 15-point nomination bonus unlocks Australian PR, check your eligibility, and view the 2026 processing times.",
-    date: "July 13, 2026",
-    image: d1,
-    img:d2
-  },
-  {
-    id: 2,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "Aged Care & Healthcare Workers ",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "Australia PR Cost Guide 2026: Visa Fees & Expenses",
-    metaDescription:
-      "Australia PR cost in 2026 explained. See visa charges, skills assessment fees, English test costs, medicals, police clearance, and more.",
-    date: "July 11, 2026",
-    image: d2,
-  },
-  {
-    id: 3,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title:
-      "Subclass 186 vs 494 vs 482: Which Visa Is Best for Hiring Nurses in Australia?",
-    description:
-      "A comparative analysis of Subclass 186, 494, and 482 visas to help employers choose the best option for hiring skilled nurses in Australia.",
-    topic:"Migration to Australia",
-    metaTitle: "How to Apply for Subclass 189 Visa & Get Australia PR",
-    metaDescription:
-      "Master the points-tested pathway to Australian PR. Learn the step-by-step Subclass 189 visa application process, document checklist, and how to submit an EOI.",
-    date: "July 10, 2026",
-    image: d3,
-  },
-  {
-    id: 4,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "Aged Care & Healthcare Workers",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle:
-      "Is Australia’s Skilled Occupation List Dead? What’s Replacing It",
-    metaDescription:
-      "With the introduction of the Core Skills Occupation List (CSOL), the old skilled migration framework is breaking down. Discover how the new points test and sector shifts affect you.",
-    date: "July 9, 2026",
-    image: d4,
-  },
-  {
-    id: 5,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title:
-      "Subclass 186 vs 494 vs 482: Which Visa Is Best for Hiring Nurses in Australia?",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "FNQ DAMA Guide: The Regional PR Pathway for Skilled Workers",
-    metaDescription:
-      "Struggling with standard points-based PR lists? Discover how the Far North Queensland DAMA opens up permanent residency with lenient age, English, and salary rules.",
-    date: "July 9, 2026",
-    image: d5,
-  },
-  {
-    id: 6,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "482 Visa Apply: Employer Sponsored Visa Requirements and Process",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "How to Apply 482 Visa Process",
-    metaDescription:
-      "how to apply for a 482 Visa in Australia. Explore eligibility, requirements, salary thresholds, visa streams, fees, and the application process.",
-    date: "July 4, 2026",
-    image: d6,
-  },
-  {
-    id: 7,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "Healthcare & Medical Professionals",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "Australia PR Partner Points: Get 5 or 10 Extra Points",
-    metaDescription:
-      "Learn how partner skills can add 5 or 10 Australia PR points for Subclass 189, 190 and 491 visas. Check eligibility and improve your PR score.",
-    date: "July 3, 2026",
-    image: d7,
-  },
-  {
-    id: 8,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title:
-      "Can You Work in Australia Without Sponsorship? A Real Option Explained",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "Subclass 400 Visa: No English Test or Sponsorship Required",
-    metaDescription:
-      "Discover who can apply for Australia's Subclass 400 Visa. Learn about eligibility, duration, documents, application process, and English test requirements.",
-    date: "Jun 30, 2026",
-    image: d8,
-  },
-  {
-    id: 9,
-    slug: "subclass-491-visa-guide-your-path-to-australia-pr",
-    title: "What Is the Western Australia DAMA and How Does It Work?",
-    description:
-      "At JobsNVisa, we connect caregivers, nurses, and support workers with trusted employers across the country.",
-    topic:"Migration to Australia",
-    metaTitle: "What Is the Western Australia DAMA and How Does It Work?",
-    metaDescription:
-      "What is the Western Australia DAMA? Learn about eligibility, employer sponsorship, occupation lists, concessions, and visa pathways.",
-    date: "Jun 27, 2026",
-    image: d1,
-  },
-];
+   {
+      id: 1,
+      slug: "your-complete-guide-to-australian-visa-pr-pathways",
+      title: "Your Complete Guide to Australian Visa & PR Pathways",
+      description:
+        "Explore the various visa and permanent residency pathways available in Australia, including skilled migration, employer-sponsored visas, and family visas.",
+      topic:"Migrate to Australia for Work",
+      metaTitle: "Migrate to Australia for Work | Jobs & Visa Pathways",
+      metaDescription:"Explore Australia's work visa pathways, employer-sponsored visas, Labour Agreements, and skilled migration options to start your career in Australia.",
+      date: "August 2, 2026",
+      image: d1,
+      img:d2
+    },
+    {
+      id: 2,
+      slug: "how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+      title: "How Jobs N Visa Connects Employers with Skilled Global Talent",
+      description:
+        "Discover how Jobs N Visa bridges the gap between employers and skilled international professionals, providing recruitment and visa support services to facilitate global talent acquisition.",
+      topic:"How Jobs N Visa Connects Employers with Skilled Global Talent",
+      metaTitle: "Jobs N Visa International Healthcare Recruitment",
+      metaDescription:"Hire skilled overseas healthcare professionals or find healthcare jobs in Australia with Jobs N Visa's recruitment and visa support services.",
+      date: "August 4, 2026",
+      image: d1,
+      img:d2
+    },
+  
+]

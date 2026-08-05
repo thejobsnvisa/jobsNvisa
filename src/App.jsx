@@ -1,6 +1,6 @@
 import './App.css'
 import Nav from './Components/Nav'
-import {BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
 import Recruiter from './pages/Recruiter'
@@ -34,9 +34,6 @@ function App() {
           <Route path="/terms" element={<Term />} />
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/brochures" element={<Brochures />} />
-
-          {/* Fallback route */}
-          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
       <Footer />

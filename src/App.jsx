@@ -1,5 +1,5 @@
 import './App.css'
-import Nav from './Components/Nav'
+// import Nav from './Components/Nav'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Footer from './Components/Footer'
@@ -21,9 +21,9 @@ function App() {
   return (
    <Router basename="/jobsNvisa">
       {/* Ensures Navbar stays relative and doesn't get overlapped */}
-      <div className="relative w-full z-50">
+      {/* <div className="relative w-full z-50">
         <Nav />
-      </div>
+      </div> */}
 
       <main className="w-full">
         <Routes>

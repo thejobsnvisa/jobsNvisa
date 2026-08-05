@@ -18,7 +18,7 @@ import Brochures from './pages/Brochures'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/jobsNvisa">
       {/* Ensures Navbar stays relative and doesn't get overlapped */}
       <div className="relative w-full z-50">
         <Nav />

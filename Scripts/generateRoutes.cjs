@@ -3,13 +3,13 @@ const path = require("path");
 
 (async () => {
   try {
-    const routes = [
+    // 1. Static base routes
+    const baseRoutes = [
       "/",
       "/recruiters-services",
       "/employee-services",
       "/recruiters",
       "/blogs",
-      "/blogs/:slug",
       "/job-search",
       "/healthcare",
       "/privacy-policy",
@@ -19,11 +19,22 @@ const path = require("path");
       "/brochures",
     ];
 
-    // Remove duplicates & sort
-    const uniqueRoutes = [...new Set(routes)].sort();
+    // 2. Fetch dynamic blog routes
+    let blogRoutes = [];
+    try {
+      const { blogs } = await import("../src/Data/BlogData.js");
+      if (Array.isArray(blogs)) {
+        blogRoutes = blogs.map((blog) => `/blogs/${blog.slug}`);
+      }
+    } catch (e) {
+      console.warn("⚠️ Could not load BlogData.js, proceeding with static routes only.");
+    }
 
+    // 3. Combine, remove duplicates & sort
+    const uniqueRoutes = [...new Set([...baseRoutes, ...blogRoutes])].sort();
+
+    // 4. Update package.json (or output to routes.json)
     const packageJsonPath = path.join(process.cwd(), "package.json");
-
     const packageJson = JSON.parse(
       fs.readFileSync(packageJsonPath, "utf8")
     );
@@ -38,7 +49,13 @@ const path = require("path");
       JSON.stringify(packageJson, null, 2) + "\n"
     );
 
-    console.log(`✅ Generated ${uniqueRoutes.length} routes for react-snap.`);
+    // Also save as a standalone JSON for other scripts to consume cleanly
+    fs.writeFileSync(
+      path.join(process.cwd(), "routes.json"),
+      JSON.stringify(uniqueRoutes, null, 2)
+    );
+
+    console.log(`✅ Successfully generated ${uniqueRoutes.length} real routes.`);
   } catch (err) {
     console.error("❌ Failed to generate routes:", err);
     process.exit(1);

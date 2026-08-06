@@ -1,19 +1,18 @@
 import { SitemapStream, streamToPromise } from "sitemap";
-import { writeFileSync } from "fs";
-import { blogs } from "../src/Data/BlogData.js"; // Adjust the path if necessary
+import { writeFileSync, existsSync } from "fs";
+import { blogs } from "../src/Data/BlogData.js";
 
 const sitemap = new SitemapStream({
   hostname: "https://jobsnvisa.com.au",
 });
 
-/* Static Pages */
+/* Static Pages (Removed placeholder route '/blogs/:slug') */
 const staticPages = [
   "/",
   "/recruiters-services",
   "/employee-services",
   "/recruiters",
   "/blogs",
-  "/blogs/:slug",
   "/job-search",
   "/healthcare",
   "/privacy-policy",
@@ -28,27 +27,39 @@ staticPages.forEach((url) => {
   sitemap.write({
     url,
     changefreq: "daily",
-    priority: 0.1,
+    priority: url === "/" ? 1.0 : 0.8, // Set higher priority for main pages
   });
 });
 
 /* Dynamic Blog Pages */
-blogs.forEach((blog) => {
-  sitemap.write({
-    url: `/blogs/${blog.slug}/`,
-    changefreq: "daily",
-    priority: 0.1,
+if (Array.isArray(blogs)) {
+  blogs.forEach((blog) => {
+    sitemap.write({
+      url: `/blogs/${blog.slug}/`,
+      changefreq: "weekly",
+      priority: 0.7,
+    });
   });
-});
+}
 
 sitemap.end();
 
-/* Generate sitemap.xml */
+/* Generate sitemap.xml directly into dist and public folders */
 streamToPromise(sitemap)
   .then((data) => {
-    writeFileSync("./public/sitemap.xml", data.toString());
+    const xmlContent = data.toString();
 
-    console.log("✅ sitemap.xml generated successfully");
+    // 1. Write to dist/ (Required for current build deploy)
+    if (existsSync("./dist")) {
+      writeFileSync("./dist/sitemap.xml", xmlContent);
+      console.log("✅ sitemap.xml written to ./dist/");
+    }
+
+    // 2. Write to public/ (For local dev copy)
+    if (existsSync("./public")) {
+      writeFileSync("./public/sitemap.xml", xmlContent);
+      console.log("✅ sitemap.xml written to ./public/");
+    }
   })
   .catch((err) => {
     console.error("❌ Sitemap generation failed:", err);

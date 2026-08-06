@@ -96,19 +96,6 @@ const path = require("path");
     });
   });
 
-  // Individual news
-  news.forEach((item) => {
-    createPage({
-      route: `/news/${item.slug}`,
-      title:
-        item.metaTitle || item.title,
-      description:
-        item.metaDescription ||
-        item.title,
-      image: item.image,
-    });
-  });
-
   console.log(
     "✅ Static pages generated successfully."
   );

@@ -52,13 +52,13 @@ streamToPromise(sitemap)
     // 1. Write to dist/ (Required for current build deploy)
     if (existsSync("./dist")) {
       writeFileSync("./dist/sitemap.xml", xmlContent);
-      console.log("✅ sitemap.xml written to ./dist/");
+      console.log("✅ Static pages generated successfully.");
     }
 
     // 2. Write to public/ (For local dev copy)
     if (existsSync("./public")) {
       writeFileSync("./public/sitemap.xml", xmlContent);
-      console.log("✅ sitemap.xml written to ./public/");
+      console.log("✅ Static pages generated successfully.");
     }
   })
   .catch((err) => {

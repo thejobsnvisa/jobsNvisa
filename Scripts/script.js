@@ -35,7 +35,7 @@ staticPages.forEach((url) => {
 if (Array.isArray(blogs)) {
   blogs.forEach((blog) => {
     sitemap.write({
-      url: `/blogs/${blog.slug}/`,
+      url: `/blogs/${blog.slug}`,
       changefreq: "weekly",
       priority: 0.7,
     });

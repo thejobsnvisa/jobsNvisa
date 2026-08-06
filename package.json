@@ -4,7 +4,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-   "scripts": {
+  "scripts": {
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
     "generate-static-pages": "node Scripts/generateStaticPages.cjs",
@@ -22,12 +22,27 @@
     "delay": 1000,
     "executionTimeLimit": 45000,
     "crawl": false,
-     "puppeteerArgs": [
+    "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox",
       "--disable-dev-shm-usage",
       "--disable-gpu",
       "--disable-gl-drawing-for-tests"
+    ],
+    "include": [
+      "/",
+      "/blogs",
+      "/blogs/:slug",
+      "/brochures",
+      "/cookie-policy",
+      "/employee-services",
+      "/healthcare",
+      "/help-center",
+      "/job-search",
+      "/privacy-policy",
+      "/recruiters",
+      "/recruiters-services",
+      "/terms"
     ]
   },
   "dependencies": {

@@ -1,9 +1,9 @@
 const fs = require("fs");
 const path = require("path");
+const { pathToFileURL } = require("url");
 
 (async () => {
   try {
-    // 1. Static base routes
     const baseRoutes = [
       "/",
       "/recruiters-services",
@@ -19,25 +19,32 @@ const path = require("path");
       "/brochures",
     ];
 
-    // 2. Fetch dynamic blog routes
     let blogRoutes = [];
     try {
-      const { blogs } = await import("../src/Data/BlogData.js");
+      // Resolve path using pathToFileURL for cross-platform ESM import compatibility
+      const blogDataPath = path.resolve(process.cwd(), "src/Data/BlogData.js");
+      const blogDataUrl = pathToFileURL(blogDataPath).href;
+
+      const { blogs } = await import(blogDataUrl);
+
       if (Array.isArray(blogs)) {
         blogRoutes = blogs.map((blog) => `/blogs/${blog.slug}`);
       }
     } catch (e) {
-      console.warn("⚠️ Could not load BlogData.js, proceeding with static routes only.");
+      console.warn("⚠️ Could not load BlogData.js, proceeding with static routes only.", e.message);
     }
 
-    // 3. Combine, remove duplicates & sort
     const uniqueRoutes = [...new Set([...baseRoutes, ...blogRoutes])].sort();
 
-    // 4. Update package.json (or output to routes.json)
-    const packageJsonPath = path.join(process.cwd(), "package.json");
-    const packageJson = JSON.parse(
-      fs.readFileSync(packageJsonPath, "utf8")
+    // 1. Save routes array to routes.json
+    fs.writeFileSync(
+      path.join(process.cwd(), "routes.json"),
+      JSON.stringify(uniqueRoutes, null, 2)
     );
+
+    // 2. Update package.json for reactSnap
+    const packageJsonPath = path.join(process.cwd(), "package.json");
+    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
 
     packageJson.reactSnap = {
       ...(packageJson.reactSnap || {}),
@@ -47,12 +54,6 @@ const path = require("path");
     fs.writeFileSync(
       packageJsonPath,
       JSON.stringify(packageJson, null, 2) + "\n"
-    );
-
-    // Also save as a standalone JSON for other scripts to consume cleanly
-    fs.writeFileSync(
-      path.join(process.cwd(), "routes.json"),
-      JSON.stringify(uniqueRoutes, null, 2)
     );
 
     console.log(`✅ Successfully generated ${uniqueRoutes.length} real routes.`);

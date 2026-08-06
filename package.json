@@ -72,6 +72,7 @@
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
     "postcss": "^8.5.15",
+    "puppeteer": "^25.5.0",
     "tailwindcss": "^3.4.19",
     "vite": "^8.0.12"
   }

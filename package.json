@@ -5,11 +5,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "postinstall": "patch-package",
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
     "generate-static-pages": "node Scripts/generateStaticPages.cjs",
-    "build": "npx shx rm -rf dist && vite build && npm run generate-routes && npm run generate-static-pages && npx react-snap && npm run sitemap",
+    "build": "npx shx rm -rf dist && vite build && npm run generate-routes && npx cross-env NODE_OPTIONS=--no-warnings react-snap && npm run sitemap",
     "preview": "vite preview",
     "sitemap": "node Scripts/script.js",
     "predeploy": "npm run build",

@@ -1,0 +1,15 @@
+diff --git a/node_modules/highland/lib/index.js b/node_modules/highland/lib/index.js
+index 745bd28..2e820b3 100644
+--- a/node_modules/highland/lib/index.js
++++ b/node_modules/highland/lib/index.js
+@@ -1491,6 +1491,10 @@ Stream.prototype.consume = function (f) {
+         if (s._nil_pushed) {
+             throw new Error('Cannot write to stream after nil');
+         }
++        // console.log(['push', err, x, s.paused]);
++if (s._nil_pushed) {
++    return; // Safely ignore pushes after stream termination
++}
+         if (x === nil) {
+             // ended, remove consumer from source
+             s._nil_pushed = true;

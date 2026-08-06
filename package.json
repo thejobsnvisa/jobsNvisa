@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "patch-package",
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
     "generate-static-pages": "node Scripts/generateStaticPages.cjs",
@@ -32,7 +33,8 @@
     "include": [
       "/",
       "/blogs",
-      "/blogs/:slug",
+      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
       "/brochures",
       "/cookie-policy",
       "/employee-services",
@@ -71,6 +73,7 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
+    "patch-package": "^8.0.1",
     "postcss": "^8.5.15",
     "puppeteer": "^25.5.0",
     "tailwindcss": "^3.4.19",

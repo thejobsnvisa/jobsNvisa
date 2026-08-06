@@ -15,38 +15,40 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "reactSnap": {
-    "source": "dist",
-    "inlineCss": false,
-    "skipThirdPartyRequests": true,
-    "concurrency": 1,
-    "delay": 1000,
-    "executionTimeLimit": 45000,
-    "crawl": false,
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu",
-      "--disable-gl-drawing-for-tests"
-    ],
-    "include": [
-      "/",
-      "/blogs",
-      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
-      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
-      "/brochures",
-      "/cookie-policy",
-      "/employee-services",
-      "/healthcare",
-      "/help-center",
-      "/job-search",
-      "/privacy-policy",
-      "/recruiters",
-      "/recruiters-services",
-      "/terms"
-    ]
-  },
+ "reactSnap": {
+  "source": "dist",
+  "inlineCss": false,
+  "skipThirdPartyRequests": true,
+  "concurrency": 1,
+  "puppeteerArgs": [
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--disable-dev-shm-usage",
+    "--disable-gpu"
+  ],
+  "puppeteerExecutablePath": null,
+  "puppeteerIgnoreHTTPSErrors": true,
+  "fixWebpackChunksIssue": "none",
+  "asyncScriptTags": true,
+  "delay": 500,
+  "crawl": false,
+  "include": [
+    "/",
+    "/blogs",
+    "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+    "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
+    "/brochures",
+    "/cookie-policy",
+    "/employee-services",
+    "/healthcare",
+    "/help-center",
+    "/job-search",
+    "/privacy-policy",
+    "/recruiters",
+    "/recruiters-services",
+    "/terms"
+  ]
+},
   "dependencies": {
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",

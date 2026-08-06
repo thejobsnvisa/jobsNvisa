@@ -29,7 +29,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="Logo"
-            className="h-10 w-28 lg:h-12 lg:w-36 lg:absolute lg:left-10 xl:left-20"
+            className="h-12 w-32 lg:h-16 lg:w-40 lg:absolute lg:left-8 lg:top-1/2 lg:-translate-y-1/2 xl:left-16"
           />
         </Link>
 

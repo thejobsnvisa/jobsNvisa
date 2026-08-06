@@ -11,6 +11,7 @@ import c3 from "../assets/Frame357.svg";
 import { useState, useEffect } from "react";
 import GPRecruitmentSolutions from "../Components/GPRecruitmentSolutions";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const Gprecuirter = () => {
   const url = "https://jobsnvisa.com.au/recruiters";
@@ -154,23 +155,31 @@ const Gprecuirter = () => {
                 </p>
 
                 <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                  <button className="h-12 px-8 rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] bg-green-800 text-white font-semibold flex items-center justify-center gap-3">
+                  <Link
+                    to="/recruiters-services"
+                    className="h-12 px-8 rounded-tl-[14px] rounded-tr-[14px] rounded-br-[14px] bg-green-800 text-white font-semibold flex items-center justify-center gap-3 w-max"
+                  >
                     <img
                       src={job}
                       alt="job"
                       className="w-6 h-6 brightness-0 invert"
                     />
                     Hire a GP
-                  </button>
+                  </Link>
 
-                  <button className="h-12 px-8 rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] bg-slate-500 text-white font-semibold flex items-center justify-center gap-3">
+                  <a
+                    href="https://zcal.co/jobsnvisa/visa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 px-8 rounded-tl-[14px] rounded-tr-[14px] rounded-br-[14px] bg-slate-500 text-white font-semibold flex items-center justify-center gap-3 w-max"
+                  >
                     <img
                       src={job}
                       alt="job"
                       className="w-6 h-6 brightness-0 invert"
                     />
                     Book Discovery Session
-                  </button>
+                  </a>
                 </div>
               </div>
 

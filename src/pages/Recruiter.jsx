@@ -25,7 +25,6 @@ import p1 from "../assets/p1.svg";
 import p2 from "../assets/p2.svg";
 import v3 from "../assets/v3.svg";
 import v4 from "../assets/v4.svg";
-import job from "../assets/job.svg";
 import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
 
@@ -186,21 +185,13 @@ const Recruiter = () => {
               <br />
               &amp; Vetting Service
             </h3>
-            <p className="max-w-[450px] mt-2 lg:mt-8 lg:ml-2 text-justify text-[15px] md:text-[15px] lg:text-[18px] leading-[150%] text-green-900">
+            <p className="max-w-[450px] mt-2 lg:mt-12 lg:ml-2 text-justify text-[15px] md:text-[15px] lg:text-[18px] leading-[150%] text-green-900">
               Comprehensive candidate screening and professional vetting
               solutions to ensure you hire the most qualified and vetted
               healthcare professionals for your organization. We conduct
               thorough background checks, credential verification, and skills
               assessments.
             </p>
-            <button className="relative lg:absolute mt-6 lg:mt-0 lg:top-[290px] lg:left-[60px] w-[220px] h-[48px] rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] py-[12px] px-[40px] inline-flex items-center justify-center gap-[20px] bg-green-800 text-white text-[16px] font-semibold">
-              <img
-                src={job}
-                alt="job"
-                className="w-7 h-6 brightness-0 invert lg:ml-[-20px]"
-              />
-              Get Started
-            </button>
           </div>
           <div className="relative lg:absolute w-full lg:w-[626px] h-[220px] md:h-[320px] lg:h-[411px] lg:left-[670px] lg:top-2 mb-6 lg:mb-0 order-1 lg:order-none">
             <img

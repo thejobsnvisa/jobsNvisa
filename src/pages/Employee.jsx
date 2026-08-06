@@ -22,7 +22,6 @@ import p2 from "../assets/p2.svg";
 import p3 from "../assets/p3.svg";
 import p4 from "../assets/p4.svg";
 import c6 from "../assets/c6.svg";
-import job from "../assets/job.svg";
 import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
 import { Helmet } from "react-helmet-async";
@@ -167,20 +166,12 @@ const Employee = () => {
               Flexible Labour Hire <br />
               &amp; Job Opportunities
             </h3>
-            <p className="max-w-[450px] mt-4 lg:mt-8 lg:ml-2 text-justify  text-[15px] md:text-[15px] lg:text-[17px] leading-[150%] text-green-900">
+            <p className="max-w-[450px] mt-4 lg:mt-12 lg:ml-2 text-justify  text-[15px] md:text-[15px] lg:text-[17px] leading-[150%] text-green-900">
               Access casual, contract, and short-term job opportunities with
               compliant Australian employers. JobsNVisa connects you to flexible
               roles that match your availability, experience, and career goals,
               while ensuring fair pay and workplace protections.
             </p>
-            <button className="relative lg:absolute mt-6 lg:mt-0 lg:top-[290px] lg:left-[60px] w-[220px] h-[48px] rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] py-[12px] px-[40px] inline-flex items-center justify-center gap-[20px] bg-green-800 text-white text-[16px] font-semibold">
-              <img
-                src={job}
-                alt="job"
-                className="w-7 h-6 brightness-0 invert lg:ml-[-20px]"
-              />
-              Get Started
-            </button>
           </div>
           <div className="relative lg:absolute w-full lg:w-[626px] h-[220px] md:h-[320px] lg:h-[411px] lg:left-[670px] lg:top-2 mb-6 lg:mb-0 order-1 lg:order-none">
             <img

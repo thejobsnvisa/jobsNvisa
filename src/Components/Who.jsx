@@ -1,13 +1,11 @@
 import img1 from "../assets/img1.png";
 import img2 from "../assets/img2.jpg";
-
+import { Link } from "react-router-dom";
 const Who = () => {
   return (
     <section className="w-full min-h-auto lg:min-h-[720px] bg-green-50 rounded-tl-[30px] lg:rounded-tl-[100px] rounded-tr-[30px] lg:rounded-tr-[100px] py-12">
       <div className="max-w-7xl mx-auto px-4">
-        <h2
-          className="text-center text-green-800 font-bold text-[40px] lg:text-[40px] mt-2"
-        >
+        <h2 className="text-center text-green-800 font-bold text-[40px] lg:text-[40px] mt-2">
           Who Is Jobs N Visa For?
         </h2>
 
@@ -28,9 +26,7 @@ const Who = () => {
             }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center  px-6 text-center">
-              <h3
-                className="font-semibold text-[24px] text-green-900 mb-4"
-              >
+              <h3 className="font-semibold text-[24px] text-green-900 mb-4">
                 For Job Seekers
               </h3>
               <p className="w-full max-w-[430px] text-[16px] lg:text-[18px] leading-8 font-bold text-green-900 mt-2">
@@ -45,7 +41,7 @@ const Who = () => {
                   <li>• Support for overseas career start</li>
                 </ul>
                 <button className=" w-[244px] h-[48px] pt-[12px] pr-[70px] pb-[12px] pl-[70px] gap-[4px] bg-green-800 hover:bg-green-700 text-white px-8 py-3 rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] font-medium transition">
-                  Explore Jobs
+                  <Link to="/job-search">Explore Jobs</Link>
                 </button>
               </div>
             </div>
@@ -61,9 +57,7 @@ const Who = () => {
             }}
           >
             <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
-              <h3
-                className="font-semibold text-[24px] text-green-900 mb-4"
-              >
+              <h3 className="font-semibold text-[24px] text-green-900 mb-4">
                 For Employers
               </h3>
               <p className="w-full max-w-[430px] text-[16px] lg:text-[18px] font-bold leading-8 text-green-900 mt-2">
@@ -77,7 +71,7 @@ const Who = () => {
                   <li>• Assistance throughout recruitment and onboarding</li>
                 </ul>
                 <button className=" w-[244px] h-[48px] pt-[12px] pr-[70px] pb-[12px] pl-[70px] gap-[4px] bg-green-800 hover:bg-green-700 text-white px-8 py-3 rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] font-medium transition">
-                  Hire Talent
+                  <Link to="/recruiters-services">Hire Talent</Link>
                 </button>
               </div>
             </div>

@@ -19,7 +19,10 @@ import Brochures from './pages/Brochures'
 function App() {
   return (
     <Router basename="/jobsNvisa">
-      <Nav />
+      <div className="relative w-full z-50">
+        <Nav />
+      </div>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/recruiters-services" element={<Recruiter />} />

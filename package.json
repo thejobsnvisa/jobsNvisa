@@ -4,13 +4,31 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
+   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
+    "generate-routes": "node Scripts/generateRoutes.cjs",
+    "generate-static-pages": "node Scripts/generateStaticPages.cjs",
+    "build": "npx shx rm -rf dist && vite build && npm run generate-routes && npm run generate-static-pages && npx react-snap && npm run sitemap",
     "preview": "vite preview",
+    "sitemap": "node Scripts/script.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
+  },
+  "reactSnap": {
+    "source": "dist",
+    "inlineCss": false,
+    "skipThirdPartyRequests": true,
+    "concurrency": 1,
+    "delay": 1000,
+    "executionTimeLimit": 45000,
+    "crawl": false,
+     "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-gpu",
+      "--disable-gl-drawing-for-tests"
+    ]
   },
   "dependencies": {
     "lucide-react": "^1.17.0",
@@ -21,6 +39,7 @@
     "react-icons": "^5.7.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.16.0",
+    "react-snap": "^1.23.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "swiper": "^12.2.0",

@@ -1,31 +1,29 @@
-import img1 from "../assets/img1.png";
-import img2 from "../assets/img2.jpg";
+import img2 from "../assets/g3.png";
 import { Link } from "react-router-dom";
 const Who = () => {
   return (
-    <section className="w-full min-h-auto lg:min-h-[720px] bg-green-50 rounded-tl-[30px] lg:rounded-tl-[100px] rounded-tr-[30px] lg:rounded-tr-[100px] py-12">
+    <section
+      className="w-full min-h-auto lg:min-h-[720px] bg-green-50 rounded-[30px] lg:rounded-[100px] py-12"
+      style={{
+        backgroundImage: `url(${img2})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-center text-green-800 font-bold text-[40px] lg:text-[40px] mt-2">
+        <h2 className="text-center text-green-50 font-bold text-[40px] lg:text-4xl mt-2">
           Who Is Jobs N Visa For?
         </h2>
 
-        <p className="text-center text-green-700 text-lg lg:text-xl max-w-4xl mx-auto mt-6 px-4">
-          Jobs N Visa is designed for professionals seeking global opportunities
-          and employers looking for skilled talent.
+        <p className="text-center text-green-300 text-lg lg:text-xl max-w-4xl mx-auto mt-6 px-4">
+        Connecting Australian employers with skilled global talent
         </p>
 
         {/* Flex container handles stacking on mobile, row on desktop */}
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mt-12 lg:mt-16">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mt-12 lg:mt-16 ">
           {/* Card 1 */}
-          <div
-            className="relative w-full max-w-[540px] h-[450px] rounded-tl-[30px] rounded-bl-[30px]  rounded-tr-[30px]  lg:rounded-bl-[80px] lg:rounded-tl-[80px] lg:rounded-tr-[80px] overflow-hidden"
-            style={{
-              backgroundImage: `linear-gradient(#7AD7A0B2, #7AD7A0B2), url(${img1})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center  px-6 text-center">
+          <div className="relative w-full max-w-[540px] h-[450px] rounded-[30px] overflow-hidden">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-6  bg-white text-center opacity-80">
               <h3 className="font-semibold text-[24px] text-green-900 mb-4">
                 For Job Seekers
               </h3>
@@ -48,15 +46,8 @@ const Who = () => {
           </div>
 
           {/* Card 2 */}
-          <div
-            className="relative w-full max-w-[540px] h-[450px] rounded-tl-[30px] rounded-bl-[30px]  rounded-tr-[30px] lg:rounded-bl-[80px] lg:rounded-tl-[80px] lg:rounded-tr-[80px] overflow-hidden"
-            style={{
-              backgroundImage: `linear-gradient(#7AD7A0B2, #7AD7A0B2), url(${img2})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-6 text-center">
+          <div className="relative w-full max-w-[540px] h-[450px] rounded-[30px]   overflow-hidden">
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-white px-6  bg-white text-center opacity-80">
               <h3 className="font-semibold text-[24px] text-green-900 mb-4">
                 For Employers
               </h3>

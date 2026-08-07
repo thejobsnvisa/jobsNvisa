@@ -3,6 +3,10 @@ import w2 from "../assets/Vector1.svg";
 import page from "../assets/JNV.jpg";
 import brochurePdf from "../assets/brochure.pdf";
 import { Helmet } from "react-helmet-async";
+<<<<<<< HEAD
+=======
+import { Link } from "react-router-dom";
+>>>>>>> parent of f4d880b (code updated)
 
 const Brochures = () => {
   const url = "https://jobsnvisa.com.au/brochures";
@@ -84,17 +88,22 @@ const Brochures = () => {
                 </div>
             </div>
 
+<<<<<<< HEAD
           {/* Use a normal anchor for file download instead of react-router Link */}
           <a
             href={brochurePdf}
             download
+=======
+          <Link
+            to={brochurePdf}
+>>>>>>> parent of f4d880b (code updated)
             target="_blank"
             rel="noreferrer"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-green-700 px-6 py-3 text-sm font-semibold text-white transition transform duration-300 hover:bg-green-800 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"
             aria-label="Download Jobs N Visa brochure"
           >
             Download Brochure
-          </a>
+          </Link>
         </div>
       </section>
     </>

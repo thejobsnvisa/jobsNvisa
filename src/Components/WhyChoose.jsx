@@ -52,7 +52,7 @@ const WhyChoose = () => {
           <div className="relative z-10 flex flex-col items-center w-full">
             {/* Heading */}
             <h2
-              className="text-[28px] sm:text-[32px] md:text-[40px] text-center text-green-800 font-bold px-4"
+              className="text-4xl sm:text-[32px] md:text-[40px] text-center text-green-800 font-bold px-4"
             >
               Why Choose Jobs N Visa?
             </h2>

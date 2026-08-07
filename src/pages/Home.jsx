@@ -3,17 +3,15 @@ import Hero from "../Components/Hero";
 import Vision from "../Components/Vision";
 import WhyChoose from "../Components/WhyChoose";
 import Who from "../Components/Who";
+import ProcessOverview from "../Components/ProcessOverview";
 import FAQ from "../Components/FAQ";
 import GetInTouch from "../Components/GetInTouch";
-import c3 from "../assets/Frame357.svg";
-import GPRecruitmentSolutions from "../Components/GPRecruitmentSolutions";
 import { Helmet } from "react-helmet-async";
 
 
 const Home = () => {
   const url = "https://jobsnvisa.com.au/";
-  const offerIcon = c3;
-    const offerItems = [{ icon: offerIcon }];
+
   return (
     <>
       <Helmet>
@@ -47,30 +45,7 @@ const Home = () => {
         <Vision />
         <WhyChoose />
         <Who />
-         <div className="w-full max-w-[1440px] mx-auto mt-10 px-5 lg:px-10">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-              {/* Left Content */}
-              <div className="w-full flex flex-col mt-6">
-                <h3 className="text-4xl text-center font-bold leading-tight text-slate-700">
-                  What We Offer
-                </h3>
-                <h6 className="mt-3 text-[18px] lg:text-[24px] font-semibold text-center leading-tight text-slate-500">
-                  Expert GP recruitment you can trust
-                </h6>
-                <div className="mt-8 flex flex-col sm:flex-row gap-[50px]">
-                  {offerItems.map((item, idx) => (
-                    <img
-                      key={idx}
-                      src={item.icon}
-                      alt={item.title || ""}
-                      className="w-78 h-80 mx-auto block xl:ml-[150px] lg:ml-[20px] md:ml-[-10px] sm:ml-[50px] sm:mt-0 mt-4"
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-      <GPRecruitmentSolutions />
+        <ProcessOverview />
         <FAQ />
         <GetInTouch />
       </div>

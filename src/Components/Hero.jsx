@@ -231,9 +231,10 @@ const Hero = () => {
   return (
     <div className="relative">
       <div
-        className="relative bg-cover bg-center h-[800px] md:h-[650px] w-full flex flex-col items-center justify-center px-4 before:absolute before:inset-0 before:bg-green-950/70 before:z-2 before:content-['']"
+        className="bg-cover bg-center h-[800px] md:h-[650px] w-full flex flex-col items-center justify-center  px-4"
         style={{ backgroundImage: `url(${bg})` }}
       >
+        <div className="absolute inset-0 bg-green-950/70 z-2" />
         <img
           src={bg2}
           alt="Decorative background"

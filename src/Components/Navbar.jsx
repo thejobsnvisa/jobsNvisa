@@ -10,6 +10,7 @@ const Navbar = () => {
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "Services", href: "#services" },
+    { name: "Recruiters", href: "/recruiters" },
     { name: "Healthcare", href: "/healthcare" },
     { name: "Job Search", href: "/job-search" },
     { name: "Blogs", href: "/blogs" },

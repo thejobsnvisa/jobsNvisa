@@ -15,9 +15,11 @@ import img5 from "../assets/5.png";
 const steps = [
   {
     icon: Search,
-    title: "Inquiry",
+    title: "GP Talent Sourcing",
     points: [
-      "Raise query by contacting us through WhatsApp / website or call us directly.",
+      "Source local and international GPs",
+      "Ensure placements in all locations",
+      "Select qualified & experienced candidates",
     ],
     top: "58%",
     left: "11.5%",
@@ -27,8 +29,12 @@ const steps = [
   },
   {
     icon: ClipboardCheck,
-    title: "Registration",
-    points: ["Book a consultation with our agent and get the best services."],
+    title: "Screening & Verification",
+    points: [
+      "CV & background assessment",
+      "Clinical experience review",
+      "Reference verification",
+    ],
     top: "70%",
     left: "32%",
     position: "top",
@@ -37,8 +43,12 @@ const steps = [
   },
   {
     icon: FileText,
-    title: "Documentation",
-    points: ["Gather and prepare all required documents."],
+    title: "AHPRA Support",
+    points: [
+      "Documentation checks",
+      "Commencement planning",
+      "Registration guidance",
+    ],
     top: "38%",
     left: "52%",
     position: "bottom",
@@ -47,8 +57,12 @@ const steps = [
   },
   {
     icon: Briefcase,
-    title: "Lodgment",
-    points: ["Lodge your visa application with precision."],
+    title: "Hiring & Placement",
+    points: [
+      "Permanent & contract roles",
+      "DPA placements",
+      "Onboarding coordination",
+    ],
     top: "48%",
     left: "72%",
     position: "top",
@@ -57,8 +71,12 @@ const steps = [
   },
   {
     icon: ShieldCheck,
-    title: "Support",
-    points: ["Receive ongoing guidance throughout the process."],
+    title: "Migration Ready Recruitment",
+    points: [
+      "Employer-sponsored pathways",
+      "Migration coordination",
+      "Visa eligibility guidance",
+    ],
     top: "19%",
     left: "92%",
     position: "bottom",
@@ -69,9 +87,9 @@ const steps = [
 export default function GPRecruitmentSolutions() {
   return (
     <section className="mt-6">
-      <div className="max-w-[1550px] mx-auto justify-center flex">
-        <div
-          className="
+      <div className="max-w-[1550px] mx-auto justify-strat flex">
+<div
+  className="
     w-full
     xl:w-[1440px]
     lg:w-[1024px]
@@ -86,9 +104,7 @@ export default function GPRecruitmentSolutions() {
     py-8
     lg:h-[590px]
   "
-        >
-          {" "}
-          <div className="relative text-center mt-[-20px]">
+>          <div className="relative text-center mt-6">
             <img
               src={c4}
               alt="Decorative background"
@@ -101,11 +117,16 @@ export default function GPRecruitmentSolutions() {
                 alt="Title background"
                 className="absolute inset-0 h-full w-full object-cover opacity-10 pointer-events-none -z-10"
               />
-              <h2  className="text-4xl font-bold text-center text-amber-600 mt-8">
-                Process Overview
+              <h2 className="relative text-4xl lg:mt-2 font-semibold text-[#0B5A39]">
+                Jobs N Visa GP Recruitment Solutions
               </h2>
+
+              <p className="relative text-[#36A96B] mt-3 text-lg">
+                Designed to support Australian clinics with hiring
+              </p>
             </div>
           </div>
+
           {/* Desktop Timeline */}
           <div className="hidden lg:block relative h-[430px]">
             <img
@@ -159,13 +180,13 @@ export default function GPRecruitmentSolutions() {
                             className="absolute w-[30px] h-[90px] top-[-20px] left-[90px] -translate-x-1/2 w-[180px] opacity-100 pointer-events-none"
                           />
 
-                          <h3 className="relative z-10 text-[24px] font-bold text-[#0B5A39] mb-2">
+                          <h3 className="relative z-10 font-bold text-[#0B5A39] mb-2">
                             {item.title}
                           </h3>
 
-                          <ul className="relative z-10 text-[18px] font-semibold text-green-600 space-y-1">
+                          <ul className="relative z-10 text-[15px] font-semibold text-green-600 space-y-1">
                             {item.points.map((point) => (
-                              <li key={point}> {point}</li>
+                              <li key={point}>• {point}</li>
                             ))}
                           </ul>
                         </div>
@@ -181,16 +202,16 @@ export default function GPRecruitmentSolutions() {
                           <img
                             src={item.image}
                             alt=""
-                            className="absolute w-[30px] h-[90px] top-[50px] left-[85px] -translate-x-1/2 w-[180px] opacity-100 pointer-events-none"
+                            className="absolute w-[30px] h-[90px] top-[60px] left-[85px] -translate-x-1/2 w-[180px] opacity-100 pointer-events-none"
                           />
 
-                          <h3 className="relative z-10 text-[24px] font-bold text-[#0B5A39] mb-2">
+                          <h3 className="relative z-10 font-bold text-[#0B5A39] mb-2">
                             {item.title}
                           </h3>
 
-                          <ul className="relative z-10 text-[18px] font-semibold text-green-600 space-y-1">
+                          <ul className="relative z-10 text-[15px] font-semibold text-green-600 space-y-1">
                             {item.points.map((point) => (
-                              <li key={point}> {point}</li>
+                              <li key={point}>• {point}</li>
                             ))}
                           </ul>
                         </div>
@@ -235,11 +256,11 @@ export default function GPRecruitmentSolutions() {
               );
             })}
           </div>
+
           {/* Mobile */}
+         
           {/* ================= Mobile & Tablet ================= */}
-          <div className="min-[1024px]:hidden px-4 sm:px-6 py-8">
-            {" "}
-            <div className="space-y-5">
+<div className="min-[1024px]:hidden px-4 sm:px-6 py-8">            <div className="space-y-5">
               {steps.map((item, index) => {
                 const Icon = item.icon;
 

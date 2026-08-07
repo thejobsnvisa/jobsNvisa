@@ -1,6 +1,7 @@
 import img5 from "../assets/img5.png";
 import img7 from "../assets/img7.png";
 import img8 from "../assets/img8.png";
+import img9 from "../assets/image9.png";
 
 export const blogs = [
    {
@@ -21,12 +22,23 @@ export const blogs = [
       title: "How Jobs N Visa Connects Employers with Skilled Global Talent",
       description:
         "Discover how Jobs N Visa bridges the gap between employers and skilled international professionals, providing recruitment and visa support services to facilitate global talent acquisition.",
-      topic:"How Jobs N Visa Connects Employers with Skilled Global Talent",
+      topic:"International Healthcare Recruitment in Australia",
       metaTitle: "Jobs N Visa International Healthcare Recruitment",
       metaDescription:"Hire skilled overseas healthcare professionals or find healthcare jobs in Australia with Jobs N Visa's recruitment and visa support services.",
       date: "August 4, 2026",
       image: img7,
       img: img8
     },
-  
+   {
+      id: 3,
+      slug: "your-guide-to-moving-to-australia-as-a-nurse",
+      title: "Your Guide to Moving to Australia as a Nurse ",
+      description:
+        "Discover how Jobs N Visa bridges the gap between employers and skilled international professionals, providing recruitment and visa support services to facilitate global talent acquisition.",
+      topic:"The Essential Checklist for International Nurses",
+      metaTitle: "Work as a Nurse in Australia: Step-by-Step Guide",
+      metaDescription:"Find nursing jobs in Australia with Jobs N Visa. Get recruitment support, employer-sponsored opportunities, visa guidance, and relocation assistance.",
+      date: "August 7, 2026",
+      image: img9,
+    },
 ]

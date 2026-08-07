@@ -85,7 +85,8 @@ const Brochures = () => {
             </div>
 
           <a
-            to={brochurePdf}
+            href={brochurePdf}
+            download="JobsNVisa_Brochure.pdf"
             target="_blank"
             rel="noreferrer"
             className="mt-8 inline-flex items-center justify-center rounded-full bg-green-700 px-6 py-3 text-sm font-semibold text-white transition transform duration-300 hover:bg-green-800 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-300"

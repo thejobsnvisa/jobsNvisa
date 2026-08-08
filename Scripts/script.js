@@ -69,7 +69,6 @@ async function generateSitemap() {
 function startLocalServer(port, distDir) {
   const serve = serveStatic(distDir, { index: ["index.html"] });
   const server = createServer((req, res) => {
-    // SPA Fallback: serve index.html for all route requests
     serve(req, res, () => {
       req.url = "/index.html";
       serve(req, res, finalhandler(req, res));
@@ -81,7 +80,7 @@ function startLocalServer(port, distDir) {
   });
 }
 
-/* 4. Custom Puppeteer Prerenderer over HTTP */
+/* 4. Custom Puppeteer Prerenderer capturing full Helmet Meta & OG details */
 async function prerenderPages() {
   const distDir = path.resolve("./dist");
   if (!existsSync(distDir)) {
@@ -110,8 +109,27 @@ async function prerenderPages() {
     const targetUrl = `http://localhost:${PORT}${route}`;
     await page.goto(targetUrl, { waitUntil: "networkidle0" });
 
-    // Wait 1.5s for React hydration/components to settle
+    // Wait 1.5s for React Helmet Async tags to settle in DOM
     await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    // Extract Meta and Open Graph details from rendered Head
+    const metaInfo = await page.evaluate(() => {
+      const getMeta = (prop) =>
+        document.querySelector(`meta[property="${prop}"], meta[name="${prop}"]`)
+          ?.getAttribute("content") || "N/A";
+
+      const canonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "N/A";
+
+      return {
+        title: document.title,
+        description: getMeta("description"),
+        canonical,
+        ogTitle: getMeta("og:title"),
+        ogDescription: getMeta("og:description"),
+        ogUrl: getMeta("og:url"),
+        ogImage: getMeta("og:image"),
+      };
+    });
 
     const html = await page.content();
     const routeFolder = path.join(distDir, route);
@@ -121,15 +139,21 @@ async function prerenderPages() {
     }
 
     writeFileSync(path.join(routeFolder, "index.html"), html);
-    console.log(`✅ Prerendered: ${route}`);
+
+    console.log(`\n✅ Prerendered: ${route}`);
+    console.log(`   ├─ Title:        "${metaInfo.title}"`);
+    console.log(`   ├─ Description:  "${metaInfo.description.substring(0, 50)}..."`);
+    console.log(`   ├─ Canonical:    "${metaInfo.canonical}"`);
+    console.log(`   ├─ OG Title:     "${metaInfo.ogTitle}"`);
+    console.log(`   └─ OG Image:     "${metaInfo.ogImage}"`);
   }
 
   await browser.close();
   server.close();
-  console.log("🎉 All static HTML pages generated successfully!");
+  console.log("\n🎉 All static HTML pages prerendered with full Meta & Open Graph tags!");
 }
 
-/* Run Main */
+/* Run Main Process */
 async function main() {
   try {
     await generateSitemap();

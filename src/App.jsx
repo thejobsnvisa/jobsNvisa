@@ -18,7 +18,7 @@ import Brochures from './pages/Brochures'
 
 function App() {
   return (
-    <Router basename="/jobsNvisa">
+    <Router>
       <div className="relative w-full z-50">
         <Nav />
       </div>

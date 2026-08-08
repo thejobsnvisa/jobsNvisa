@@ -4,7 +4,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
@@ -15,7 +14,6 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-
   "reactSnap": {
     "source": "dist",
     "inlineCss": false,
@@ -24,14 +22,12 @@
     "delay": 1000,
     "executionTimeLimit": 45000,
     "crawl": false,
-
     "exclude": [
       "/blogs",
       "/blogs/",
       "/brochures",
       "/brochures/"
     ],
-
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox",
@@ -39,10 +35,12 @@
       "--disable-gpu",
       "--disable-gl-drawing-for-tests"
     ],
-
     "include": [
       "/",
       "/blogs",
+      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
+      "/blogs/your-guide-to-moving-to-australia-as-a-nurse",
       "/brochures",
       "/cookie-policy",
       "/employee-services",
@@ -55,7 +53,6 @@
       "/terms"
     ]
   },
-
   "dependencies": {
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",
@@ -71,7 +68,6 @@
     "swiper": "^12.2.0",
     "xlsx": "^0.18.5"
   },
-
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/react": "^19.2.14",

@@ -1,8 +1,3 @@
-import img5 from "../assets/img5.png";
-import img7 from "../assets/img7.png";
-import img8 from "../assets/img8.png";
-import img9 from "../assets/image9.png";
-
 export const blogs = [
    {
       id: 1,
@@ -14,7 +9,7 @@ export const blogs = [
       metaTitle: "Migrate to Australia for Work | Jobs & Visa Pathways",
       metaDescription:"Explore Australia's work visa pathways, employer-sponsored visas, Labour Agreements, and skilled migration options to start your career in Australia.",
       date: "August 2, 2026",
-      image: img5,
+      image: `/assets/img5.png`,
     },
     {
       id: 2,
@@ -26,8 +21,8 @@ export const blogs = [
       metaTitle: "Jobs N Visa International Healthcare Recruitment",
       metaDescription:"Hire skilled overseas healthcare professionals or find healthcare jobs in Australia with Jobs N Visa's recruitment and visa support services.",
       date: "August 4, 2026",
-      image: img7,
-      img: img8
+      image: `/assets/img7.png`,
+      img: `/assets/img8.png`
     },
    {
       id: 3,
@@ -39,6 +34,6 @@ export const blogs = [
       metaTitle: "Work as a Nurse in Australia: Step-by-Step Guide",
       metaDescription:"Find nursing jobs in Australia with Jobs N Visa. Get recruitment support, employer-sponsored opportunities, visa guidance, and relocation assistance.",
       date: "August 7, 2026",
-      image: img9,
+      image: `/assets/img9.png`,
     },
 ]

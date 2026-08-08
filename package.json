@@ -8,7 +8,7 @@
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
     "generate-static-pages": "node Scripts/generateStaticPages.cjs",
-    "build": "npx shx rm -rf dist && vite build && npm run generate-routes && npm run generate-static-pages && npm run sitemap && npm run react-snap",
+    "build": "npx shx rm -rf dist && vite build && npm run generate-routes && npm run generate-static-pages && npx react-snap && npm run sitemap",
     "preview": "vite preview",
     "sitemap": "node Scripts/script.js",
     "predeploy": "npm run build",
@@ -82,10 +82,10 @@
     "patch-package": "^8.0.1",
     "postcss": "^8.5.15",
     "puppeteer": "^25.5.0",
-    "react-snap": "^1.23.0",
-    "shx": "^0.4.0",
+    "react-snap": "1.23.0",
     "tailwindcss": "^3.4.19",
     "vite": "^8.0.12",
-    "vite-node": "^6.0.0"
+    "vite-node": "^6.0.0",
+    "shx": "^0.4.0"
   }
 }

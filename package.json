@@ -38,14 +38,35 @@
     "eslint": "^10.3.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "finalhandler": "^2.1.1",
     "gh-pages": "^6.3.0",
     "globals": "^17.6.0",
     "patch-package": "^8.0.1",
     "postcss": "^8.5.15",
     "puppeteer": "^25.5.0",
+    "serve-static": "^2.2.1",
     "shx": "^0.4.0",
     "tailwindcss": "^3.4.19",
     "vite": "^8.0.12",
     "vite-node": "^6.0.0"
+  },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/blogs",
+      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
+      "/blogs/your-guide-to-moving-to-australia-as-a-nurse",
+      "/brochures",
+      "/cookie-policy",
+      "/employee-services",
+      "/healthcare",
+      "/help-center",
+      "/job-search",
+      "/privacy-policy",
+      "/recruiters",
+      "/recruiters-services",
+      "/terms"
+    ]
   }
 }

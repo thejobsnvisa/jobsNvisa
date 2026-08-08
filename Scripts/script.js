@@ -1,8 +1,11 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { writeFileSync, existsSync, mkdirSync } from "fs";
-import { blogs } from "../src/Data/BlogData.js";
+import { createServer } from "http";
+import serveStatic from "serve-static";
+import finalhandler from "finalhandler";
 import puppeteer from "puppeteer";
 import path from "path";
+import { blogs } from "../src/Data/BlogData.js";
 
 /* 1. Define Routes */
 const staticPages = [
@@ -62,12 +65,33 @@ async function generateSitemap() {
   console.log("✅ Sitemap generated successfully.");
 }
 
-/* 3. Custom Puppeteer Prerenderer (Replaces react-snap without Highland) */
+/* 3. Local HTTP Server Setup */
+function startLocalServer(port, distDir) {
+  const serve = serveStatic(distDir, { index: ["index.html"] });
+  const server = createServer((req, res) => {
+    // SPA Fallback: serve index.html for all route requests
+    serve(req, res, () => {
+      req.url = "/index.html";
+      serve(req, res, finalhandler(req, res));
+    });
+  });
+
+  return new Promise((resolve) => {
+    server.listen(port, () => resolve(server));
+  });
+}
+
+/* 4. Custom Puppeteer Prerenderer over HTTP */
 async function prerenderPages() {
-  if (!existsSync("./dist")) {
+  const distDir = path.resolve("./dist");
+  if (!existsSync(distDir)) {
     console.error("❌ ./dist directory does not exist. Run vite build first.");
     return;
   }
+
+  const PORT = 45678;
+  const server = await startLocalServer(PORT, distDir);
+  console.log(`🌐 Local static server started on http://localhost:${PORT}`);
 
   console.log("🚀 Starting static page prerendering...");
   const browser = await puppeteer.launch({
@@ -81,19 +105,10 @@ async function prerenderPages() {
   });
 
   const page = await browser.newPage();
-  const distDir = path.resolve("./dist");
 
   for (const route of allRoutes) {
-    // Navigate Chrome directly to dist/index.html with route hash/path
-    const fileUrl = `file://${path.join(distDir, "index.html")}`;
-    
-    await page.goto(fileUrl, { waitUntil: "networkidle0" });
-
-    // Simulate SPA client routing
-    await page.evaluate((targetRoute) => {
-      window.history.pushState({}, "", targetRoute);
-      window.dispatchEvent(new Event("popstate"));
-    }, route);
+    const targetUrl = `http://localhost:${PORT}${route}`;
+    await page.goto(targetUrl, { waitUntil: "networkidle0" });
 
     // Wait 1.5s for React hydration/components to settle
     await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -110,25 +125,18 @@ async function prerenderPages() {
   }
 
   await browser.close();
+  server.close();
   console.log("🎉 All static HTML pages generated successfully!");
 }
 
-/* Run both functions sequential */
+/* Run Main */
 async function main() {
   try {
     await generateSitemap();
     await prerenderPages();
   } catch (err) {
     console.error("❌ Generation process failed:", err);
-    if (
-      typeof globalThis !== "undefined" &&
-      typeof globalThis.process !== "undefined" &&
-      typeof globalThis.process.exit === "function"
-    ) {
-      globalThis.process.exit(1);
-    } else {
-      throw err;
-    }
+    process.exit(1);
   }
 }
 

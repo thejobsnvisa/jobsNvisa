@@ -4,6 +4,7 @@ import r1 from "../assets/recruiter.png";
 import w1 from "../assets/w1.png";
 import w2 from "../assets/Vector1.svg";
 import r4 from "../assets/r4.png";
+import job from "../assets/job.svg";
 import r2 from "../assets/r2.png";
 import r3 from "../assets/r3.png";
 import r5 from "../assets/r5.png";
@@ -185,13 +186,26 @@ const Recruiter = () => {
               <br />
               &amp; Vetting Service
             </h3>
-            <p className="max-w-[450px] mt-2 lg:mt-12 lg:ml-2 text-justify text-[15px] md:text-[15px] lg:text-[18px] leading-[150%] text-green-900">
+            <p className="max-w-[450px] mt-2 lg:mt-8 lg:ml-2 text-justify text-[15px] md:text-[15px] lg:text-[18px] leading-[150%] text-green-900">
               Comprehensive candidate screening and professional vetting
               solutions to ensure you hire the most qualified and vetted
               healthcare professionals for your organization. We conduct
               thorough background checks, credential verification, and skills
               assessments.
             </p>
+             <a
+                    href="https://zcal.co/jobsnvisa/visa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="h-12 px-8 mt-6 rounded-tl-[14px] rounded-tr-[14px] rounded-bl-[14px] bg-slate-500 text-white font-semibold flex items-center justify-center gap-3 w-max"
+                  >
+                    <img
+                      src={job}
+                      alt="job"
+                      className="w-6 h-6 brightness-0 invert"
+                    />
+                    Book Discovery Session
+                  </a>
           </div>
           <div className="relative lg:absolute w-full lg:w-[626px] h-[220px] md:h-[320px] lg:h-[411px] lg:left-[670px] lg:top-2 mb-6 lg:mb-0 order-1 lg:order-none">
             <img

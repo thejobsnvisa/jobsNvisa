@@ -4,16 +4,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
- "scripts": {
-  "dev": "vite",
-  "generate-routes": "node Scripts/generateRoutes.cjs",
-  "generate-static-pages": "node Scripts/generateStaticPages.cjs",
-  "build": "npx shx rm -rf dist && vite build && npm run generate-static-pages && npm run generate-routes && npm run sitemap",
-  "preview": "vite preview",
-  "sitemap": "vite-node Scripts/script.js",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
+  "scripts": {
+    "dev": "vite",
+    "generate-routes": "node Scripts/generateRoutes.cjs",
+    "generate-static-pages": "node Scripts/generateStaticPages.cjs",
+    "build": "npx shx rm -rf dist && vite build && npm run generate-static-pages && npm run generate-routes && npm run sitemap",
+    "preview": "vite preview",
+    "sitemap": "vite-node Scripts/script.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "dependencies": {
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",
@@ -46,5 +46,24 @@
     "tailwindcss": "^3.4.19",
     "vite": "^8.0.12",
     "vite-node": "^6.0.0"
+  },
+  "reactSnap": {
+    "include": [
+      "/",
+      "/blogs",
+      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
+      "/blogs/your-guide-to-moving-to-australia-as-a-nurse",
+      "/brochures",
+      "/cookie-policy",
+      "/employee-services",
+      "/healthcare",
+      "/help-center",
+      "/job-search",
+      "/privacy-policy",
+      "/recruiters",
+      "/recruiters-services",
+      "/terms"
+    ]
   }
 }

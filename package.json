@@ -5,6 +5,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "postinstall": "patch-package",
     "dev": "vite",
     "generate-routes": "node Scripts/generateRoutes.cjs",
     "generate-static-pages": "node Scripts/generateStaticPages.cjs",
@@ -14,45 +15,33 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "reactSnap": {
-    "source": "dist",
-    "inlineCss": false,
-    "skipThirdPartyRequests": true,
-    "concurrency": 1,
-    "delay": 1000,
-    "executionTimeLimit": 45000,
-    "crawl": false,
-    "exclude": [
-      "/blogs",
-      "/blogs/",
-      "/brochures",
-      "/brochures/"
-    ],
-    "puppeteerArgs": [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-gpu",
-      "--disable-gl-drawing-for-tests"
-    ],
-    "include": [
-      "/",
-      "/blogs",
-      "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
-      "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
-      "/blogs/your-guide-to-moving-to-australia-as-a-nurse",
-      "/brochures",
-      "/cookie-policy",
-      "/employee-services",
-      "/healthcare",
-      "/help-center",
-      "/job-search",
-      "/privacy-policy",
-      "/recruiters",
-      "/recruiters-services",
-      "/terms"
-    ]
-  },
+ "reactSnap": {
+  "source": "dist",
+  "inlineCss": false,
+  "skipThirdPartyRequests": true,
+  "concurrency": 1,
+  "delay": 2000,
+  "executionTimeLimit": 60000,
+  "crawl": false,
+  "exclude": [],
+  "include": [
+    "/",
+    "/blogs",
+    "/blogs/how-jobs-n-visa-connects-employers-with-skilled-global-talent",
+    "/blogs/your-complete-guide-to-australian-visa-pr-pathways",
+    "/blogs/your-guide-to-moving-to-australia-as-a-nurse",
+    "/brochures",
+    "/cookie-policy",
+    "/employee-services",
+    "/healthcare",
+    "/help-center",
+    "/job-search",
+    "/privacy-policy",
+    "/recruiters",
+    "/recruiters-services",
+    "/terms"
+  ]
+},
   "dependencies": {
     "lucide-react": "^1.17.0",
     "react": "^19.2.6",

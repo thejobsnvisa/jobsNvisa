@@ -59,6 +59,7 @@
     "react-icons": "^5.7.0",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.16.0",
+    "react-snap": "^1.23.0",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
     "sitemap": "^9.0.1",

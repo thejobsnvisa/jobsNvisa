@@ -13,7 +13,6 @@ const staticPages = [
   /* Services */
   "/recruiters-services/",
   "/employee-services/",
-  "/recruiters/",
 
   /* Jobs */
   "/job-search/",

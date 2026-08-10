@@ -40,6 +40,10 @@ const Home = () => {
         <meta property="og:image" content="https://jobsnvisa.com.au/assets/aboutImage.png" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="630" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia" />
+        <meta property="twitter:description" content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas." />
+        <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/" />
       </Helmet>
       <div>
         <Hero />

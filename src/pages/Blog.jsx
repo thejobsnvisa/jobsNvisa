@@ -31,6 +31,10 @@ const Blog = () => {
                   <meta property="og:image" content="https://jobsnvisa.com.au/assets/d1.png" />
                   <meta property="og:image:height" content="630" />
                   <meta property="og:image:width" content="630" />
+                  <meta property="twitter:card" content="summary_large_image" />
+                  <meta property="twitter:title" content="Blogs | Jobs N Visa" />
+                  <meta property="twitter:description" content="Stay updated with the latest news and insights on Australian migration, jobs, and visa processes." />
+                  <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/d1.png" />
                 </Helmet>
       <div>
           <section className="max-w-[1440px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">

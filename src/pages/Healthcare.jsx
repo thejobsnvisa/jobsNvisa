@@ -323,6 +323,10 @@ const Healthcare = () => {
         />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="630" />
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Healthcare Jobs in Australia | Jobs N Visa" />
+        <meta property="twitter:description" content="Explore healthcare job opportunities in Australia with Jobs N Visa. Find roles for nurses, lab technologists, and other healthcare professionals." />
+        <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/Occupational Therapist.jpg" />
       </Helmet>
       <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
         {/* Header Banner */}

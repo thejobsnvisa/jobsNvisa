@@ -1,6 +1,6 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { writeFileSync } from "fs";
-import { blogs } from "../src/Data/BlogData";
+import { blogs } from "../src/Data/BlogData.js";
 
 const sitemap = new SitemapStream({
   hostname: "https://www.jobsnvisa.com.au",

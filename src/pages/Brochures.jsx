@@ -5,7 +5,7 @@ import brochurePdf from "../assets/brochure.pdf";
 import { Helmet } from "react-helmet-async";
 
 const Brochures = () => {
-  const url = "https://jobsnvisa.com.au/brochures";
+  const url = "https://jobsnvisa.com.au/brochures/";
 
   return (
     <>

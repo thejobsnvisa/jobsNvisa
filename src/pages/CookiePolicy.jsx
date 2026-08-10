@@ -3,7 +3,7 @@ import w2 from "../assets/Vector1.svg";
 import { Helmet } from "react-helmet-async";
 
 const CookiePolicy = () => {
-  const url = "https://jobsnvisa.com.au/cookie-policy";
+  const url = "https://jobsnvisa.com.au/cookie-policy/";
 
   return (
     <>

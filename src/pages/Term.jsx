@@ -3,7 +3,7 @@ import w2 from "../assets/Vector1.svg";
 import { Helmet } from "react-helmet-async";
 
 const Term = () => {
-  const url = "https://jobsnvisa.com.au/terms";
+  const url = "https://jobsnvisa.com.au/terms/";
 
   return (
     <>

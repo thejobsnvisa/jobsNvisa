@@ -3,7 +3,7 @@ import w2 from "../assets/Vector1.svg";
 import { Helmet } from "react-helmet-async";
 
 const PrivacyPolicy = () => {
-  const url = "https://jobsnvisa.com.au/privacy-policy";
+  const url = "https://jobsnvisa.com.au/privacy-policy/";
 
   return (
     <>

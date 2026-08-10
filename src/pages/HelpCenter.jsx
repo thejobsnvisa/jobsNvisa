@@ -11,7 +11,7 @@ import { HiOutlineChat } from "react-icons/hi";
 import FAQSection from "../Components/FAQSection";
 
 const HelpCenter = () => {
-  const url = "https://jobsnvisa.com.au/help-center";
+  const url = "https://jobsnvisa.com.au/help-center/";
 
   return (
     <>

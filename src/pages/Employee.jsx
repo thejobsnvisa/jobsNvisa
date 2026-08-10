@@ -26,7 +26,7 @@ import h1 from "../assets/h1.png";
 import GetInTouch from "../Components/GetInTouch";
 import { Helmet } from "react-helmet-async";
 const Employee = () => {
-  const url = "https://jobsnvisa.com.au/employee-services";
+  const url = "https://jobsnvisa.com.au/employee-services/";
   const payrollCards = [
     {
       icon: c1,

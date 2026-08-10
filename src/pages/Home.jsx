@@ -17,34 +17,76 @@ const Home = () => {
   return (
     <>
       <Helmet>
-        <title>Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia</title>
+  <title>Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia</title>
 
-        <meta
-          name="description"
-          content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas."
-        />
+  <meta
+    name="description"
+    content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas."
+  />
 
-        {/* ✅ Canonical for homepage */}
-        <link rel="canonical" href={url} />
+  <link rel="canonical" href={url} />
 
-        {/* ✅ OG */}
-        <meta
-          property="og:title"
-          content="Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia"
-        />
-        <meta
-          property="og:description"
-          content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas."
-        />
-        <meta property="og:url" content={url} />
-        <meta property="og:image" content="https://jobsnvisa.com.au/assets/aboutImage.png" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:width" content="630" />
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:title" content="Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia" />
-        <meta property="twitter:description" content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas." />
-        <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/" />
-      </Helmet>
+  {/* Open Graph */}
+  <meta
+    property="og:title"
+    content="Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia"
+  />
+
+  <meta
+    property="og:description"
+    content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas."
+  />
+
+  <meta property="og:url" content={url} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jobs N Visa" />
+
+  <meta
+    property="og:image"
+    content="https://jobsnvisa.com.au/assets/q1.png"
+  />
+
+  <meta
+    property="og:image:width"
+    content="1200"
+  />
+
+  <meta
+    property="og:image:height"
+    content="630"
+  />
+
+  <meta
+    property="og:image:alt"
+    content="Jobs N Visa - Jobs and Visa Opportunities in Australia"
+  />
+
+  {/* Twitter / X */}
+  <meta
+    name="twitter:card"
+    content="summary_large_image"
+  />
+
+  <meta
+    name="twitter:title"
+    content="Jobs N Visa | Hire Talent & Find Skilled Jobs in Australia"
+  />
+
+  <meta
+    name="twitter:description"
+    content="Jobs N Visa is the leading platform for hiring skilled talent and finding job opportunities in Australia. Get expert support for skilled migration, PR visas, and employer-sponsored visas."
+  />
+
+  <meta
+    name="twitter:image"
+    content="https://jobsnvisa.com.au/assets/q1.png"
+  />
+
+  <meta
+    name="twitter:image:alt"
+    content="Jobs N Visa - Jobs and Visa Opportunities in Australia"
+  />
+</Helmet>
       <div>
         <Hero />
         <About />

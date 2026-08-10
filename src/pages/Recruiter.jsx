@@ -144,6 +144,14 @@ const Recruiter = () => {
         <meta property="og:image" content="https://jobsnvisa.com.au/assets/recruiter.png" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="630" />
+        {/* ✅ Twitter */}
+        <meta name="twitter:title" content="Recruiter Services | Jobs N Visa" />
+        <meta
+          name="twitter:description"
+          content="Discover Jobs N Visa's Recruiter Services for candidate screening, vetting, onboarding, and retention support. Hire skilled employees with confidence."
+        />
+        <meta name="twitter:image" content="https://jobsnvisa.com.au/assets/recruiter.png" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
       <div className="flex flex-col items-center text-center mt-24 lg:mt-24">

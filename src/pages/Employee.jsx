@@ -125,6 +125,11 @@ const Employee = () => {
             <meta property="og:image" content="https://jobsnvisa.com.au/assets/r4.png" />
             <meta property="og:image:height" content="630" />
             <meta property="og:image:width" content="630" />
+            {/* ✅ Twitter */}
+            <meta name="twitter:title" content="Employee Services | Jobs N Visa" />
+            <meta name="twitter:description" content="Discover Jobs N Visa's Employee Services for career growth, job opportunities, and visa guidance in Australia." />
+            <meta name="twitter:image" content="https://jobsnvisa.com.au/assets/r4.png" />
+            <meta name="twitter:card" content="summary_large_image" />
           </Helmet>
     <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
       <div className="flex flex-col items-center text-center mt-24 lg:mt-24">

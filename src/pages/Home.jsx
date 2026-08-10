@@ -43,7 +43,7 @@ const Home = () => {
 
   <meta
     property="og:image"
-    content="https://jobsnvisa.com.au/assets/q1.png"
+    content="https://jobsnvisa.com.au/assets/q1.jpg"
   />
 
   <meta
@@ -79,7 +79,7 @@ const Home = () => {
 
   <meta
     name="twitter:image"
-    content="https://jobsnvisa.com.au/assets/q1.png"
+    content="https://jobsnvisa.com.au/assets/q1.jpg"
   />
 
   <meta

@@ -29,14 +29,14 @@ const Brochures = () => {
         <meta property="og:url" content={url} />
         <meta
           property="og:image"
-          content="https://jobsnvisa.com.au/assets/r4.png"
+          content="https://jobsnvisa.com.au/assets/JNV.jpg"
         />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:width" content="630" />
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:title" content="Brochures | Jobs N Visa" />
         <meta property="twitter:description" content="Discover Jobs N Visa's Brochures for more information about our services." />
-        <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/jnv.jpg" />
+        <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/JNV.jpg" />
       </Helmet>
       <section className="max-w-[1420px] mx-auto px-4 pt-10 pb-12 overflow-x-hidden">
         <div className="flex flex-col items-center text-center mt-24 lg:mt-24">

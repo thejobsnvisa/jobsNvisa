@@ -15,10 +15,12 @@ import CookiePolicy from './pages/CookiePolicy'
 import Term from './pages/Term'
 import HelpCenter from './pages/HelpCenter'
 import Brochures from './pages/Brochures'
+import ScrollToTop from './Components/ScrollToTop'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="relative w-full z-50">
         <Nav />
       </div>

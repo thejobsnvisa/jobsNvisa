@@ -65,8 +65,8 @@ const CookiePolicy = () => {
             </div>
           </div>
         </div>
-        <div className="w-full max-w-[900px] mx-auto mt-12 ml-64">
-          <div className="bg-green-50 mt-10 rounded-[40px]  bg-green-50 md:rounded-[70px] p-6 md:p-10 shadow-[0px_4px_15px_2px_#93939340]">
+        <div className="w-full max-w-[900px] mx-auto mt-8 sm:mt-12 px-2 sm:px-4 lg:px-0">
+          <div className="bg-green-50 mt-10 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[70px] p-5 sm:p-6 md:p-10 shadow-[0px_4px_15px_2px_#93939340]">
             <h2 className="text-center text-green-700 font-bold text-[20px] md:text-[16px]">
               1. What Are Cookies?
             </h2>

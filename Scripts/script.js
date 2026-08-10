@@ -1,7 +1,6 @@
 import { SitemapStream, streamToPromise } from "sitemap";
 import { writeFileSync } from "fs";
-import { news } from "../src/data/newsData.js";
-import { blogs } from "../src/data/blogsData.js";
+import { blogs } from "../src/Data/BlogData";
 
 const sitemap = new SitemapStream({
   hostname: "https://www.jobsnvisa.com.au",
@@ -41,14 +40,6 @@ staticPages.forEach((url) => {
   });
 });
 
-/* Dynamic News Pages */
-news.forEach((article) => {
-  sitemap.write({
-    url: `/news/${article.slug}/`,
-    changefreq: "daily",
-    priority: 0.1,
-  });
-});
 
 /* Dynamic Blog Pages */
 blogs.forEach((blog) => {

@@ -20,10 +20,15 @@ const faqs = [
     answer:
       "Simply submit your CV through our website or contact our team. We'll review your profile, assess your eligibility, and match your skills with suitable job opportunities in Australia.",
   },
-  {
-    question: "What documents do I need to apply for a job?",
+   {
+    question: "Do you guarantee employment or a job offer?",
     answer:
-      "Requirements may vary depending on the role, but commonly requested documents include your CV, educational qualifications, professional registrations or licences (if applicable), employment references, and a valid passport.",
+      "No. We don’t guarantee interviews, job offers, or employment. We connect suitable candidates with Australian employers based on their skills, qualifications, experience, and the available roles. The final decision to interview or hire always rests with the employer.",
+  },
+   {
+    question: "Do candidates have to pay a recruitment or placement fee?",
+    answer:
+      "No. Jobs N Visa does not charge candidates a recruitment fee simply for introducing them to an Australian employer. Be cautious of anyone asking you to pay for a guaranteed job, employment outcome, or visa.",
   },
   {
     question: "What support does Jobs N Visa provide during the recruitment process?",
@@ -33,17 +38,22 @@ const faqs = [
   {
     question: "Do I need a job offer before applying for an employer-sponsored visa?",
     answer:
-      "In most cases, yes. An employer-sponsored visa generally requires an approved Australian employer to nominate you for a suitable position.",
+      "Generally, yes. Most employer-sponsored visa pathways require a suitable job offer from an Australian employer. Requirements vary by visa subclass and individual circumstances. For immigration-related guidance, you can seek advice from a registered migration agent.",
   },
   {
     question: "Can I change employers while on a work visa?",
     answer:
-      "Some work visas allow you to change employers, while others require a new sponsorship or approval before you can start working with a different employer. The requirements depend on your visa subclass and individual circumstances.",
+      "This depends on your visa subclass and individual circumstances. Some visas have specific conditions relating to your employer and the work you can undertake. Before changing employers, make sure you understand the conditions attached to your visa and obtain appropriate immigration advice where required.",
   },
   {
     question: "Can a work visa lead to permanent residency?",
     answer:
-      "Some employer-sponsored visas in Australia can provide a pathway to permanent residency if you meet the eligibility requirements set by the Australian Government.",
+      "Some Australian work and employer-sponsored visas may provide a pathway to permanent residency if you meet the relevant eligibility requirements. The pathway depends on your visa subclass, occupation, employment, and individual circumstances.",
+  },
+  {
+    question: "Do you guarantee visa approval or professional registration?",
+    answer:
+      "No. We do not guarantee visa approval, sponsorship, migration outcomes, or professional registration. Visa applications are assessed by the Australian Government, while professional registration is determined by the relevant regulator or professional body.",
   },
 ];
 

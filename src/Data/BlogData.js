@@ -37,7 +37,7 @@ export const blogs = [
       image: `/assets/img9.png`,
     },
      {
-      id: 3,
+      id: 4,
       slug: "why-your-resume-matters-when-applying-for-jobs-in-australia",
       title: "Why Your Resume Matters When Applying for Jobs in Australia",
       description:
@@ -46,6 +46,6 @@ export const blogs = [
       metaTitle: "How to Write an Australian-Style Resume | Jobs N Visa",
       metaDescription:"Learn how to write an Australian-style resume with tips on skills, experience, qualifications and tailoring your resume for Australian jobs.",
       date: "August 27, 2026",
-      image: `/assets/img10.png`,
+      image: `/assets/z1.png`,
     },
 ]

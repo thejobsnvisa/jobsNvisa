@@ -48,4 +48,16 @@ export const blogs = [
       date: "August 27, 2026",
       image: `/assets/z1.png`,
     },
+     {
+      id: 5,
+      slug: "recruitment-and-visa-guidance-for-international-healthcare-professionals",
+      title: "Recruitment and Visa Guidance for International Healthcare Professionals",
+      description:
+        "Explore healthcare jobs in Australia with visa sponsorship, including recruitment pathways, employer-sponsored opportunities, and guidance for international healthcare professionals.",
+      topic:"Healthcare Jobs in Australia With Visa Sponsorship ",
+      metaTitle: "Healthcare Jobs in Australia With Visa Sponsorship",
+      metaDescription:"Explore healthcare jobs in Australia with visa sponsorship, recruitment pathways and visa options for international healthcare professionals.",
+      date: "Sep 23, 2026",
+      image: `/assets/z2.png`,
+    },
 ]

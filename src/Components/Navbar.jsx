@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link
 import logo from "../assets/logo.svg";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -11,7 +10,6 @@ const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "Services", href: "#services" },
     { name: "Healthcare", href: "/healthcare" },
-    { name: "Job Search", href: "/job-search" },
     { name: "Blogs", href: "/blogs" },
   ];
 
@@ -24,13 +22,11 @@ const Navbar = () => {
     <nav aria-label="Main navigation" className="w-full">
       <div className="relative w-full min-h-[100px] px-6 lg:px-10 bg-green-100 rounded-bl-[40px] rounded-br-[40px] flex items-center justify-between lg:justify-center">
         {/* Logo */}
-        <Link to="/">
-          <img
-            src={logo}
-            alt="Logo"
-            className="h-12 w-32 lg:h-16 lg:w-40 lg:absolute lg:left-8 lg:top-1/2 lg:-translate-y-1/2 xl:left-16"
-          />
-        </Link>
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-10 w-28 lg:h-12 lg:w-36 lg:absolute lg:left-10 xl:left-20"
+        />
 
         {/* Mobile Menu Button */}
         <button
@@ -124,8 +120,8 @@ const Navbar = () => {
                   >
                     {serviceItems.map((service) => (
                       <li key={service.name}>
-                        <Link
-                          to={service.href}
+                        <a
+                          href={service.href}
                           className="block whitespace-nowrap text-green-800 px-4 py-2 hover:bg-green-50"
                           onClick={() => {
                             setIsOpen(false);
@@ -133,19 +129,19 @@ const Navbar = () => {
                           }}
                         >
                           {service.name}
-                        </Link>
+                        </a>
                       </li>
                     ))}
                   </ul>
                 </>
               ) : (
-                <Link
-                  to={item.href}
+                <a
+                  href={item.href}
                   className="text-green-800 text-[20px] hover:font-bold transition"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
-                </Link>
+                </a>
               )}
             </li>
           ))}

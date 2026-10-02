@@ -8,14 +8,236 @@ import d5 from "../assets/Physiotherapist.jpg";
 import d6 from "../assets/General Practitioner (Emergency Skills).jpg";
 import d7 from "../assets/personal care worker.jpg";
 import a1 from "../assets/arrow.png";
+import { MdOutlinePersonSearch } from "react-icons/md";
+import { RiFileUserLine } from "react-icons/ri";
 import { LuClock3, LuMapPin, LuBriefcase } from "react-icons/lu";
 import { FaRegCheckCircle } from "react-icons/fa";
 import { RiUserSettingsLine } from "react-icons/ri";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
+const initialForm = {
+  companyName: "",
+  tradingName: "",
+  companyLocation: "",
+  industry: "",
+  companyWebsite: "",
+  fullName: "",
+  contactJobTitle: "",
+  email: "",
+  mobileNumber: "",
+  positionTitle: "",
+  numberOfStaff: "",
+  jobType: "",
+  salaryRange: "",
+  workLocation: "",
+  startDate: "",
+  keySkills: "",
+  additionalNote: "",
+  currentLocation: "",
+  currentVisaType: "",
+  jobTypeSeeker: "",
+  message: "",
+  industryExperience: "",
+  yearsOfExperience: "",
+  resumeFile: null,
+  consent: false,
+  serviceTypes: [],
+  mandatoryRequirements: [],
+};
+
+function useHeroForm() {
+  const [open, setOpen] = useState(false);
+  const [modalType, setModalType] = useState("");
+  const [form, setForm] = useState(initialForm);
+  const [submissions, setSubmissions] = useState([]);
+
+  const onChange = (e) => {
+    const { name, type, value, checked, files } = e.target;
+    if (type === "checkbox" && name === "consent") {
+      setForm((prev) => ({ ...prev, consent: checked }));
+      return;
+    }
+    if (type === "file") {
+      setForm((prev) => ({ ...prev, resumeFile: files[0] || null }));
+      return;
+    }
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const openModal = (type) => {
+    setModalType(type);
+    setOpen(true);
+  };
+
+  const closeModal = () => {
+    setOpen(false);
+    setModalType("");
+  };
+
+  const toggleArrayValue = (field, value) => {
+    setForm((prev) => {
+      const current = prev[field] || [];
+      const hasValue = current.includes(value);
+      return {
+        ...prev,
+        [field]: hasValue
+          ? current.filter((item) => item !== value)
+          : [...current, value],
+      };
+    });
+  };
+
+  const GAS_WEB_APP_URL =
+    "https://script.google.com/macros/s/AKfycbz_nkEAd_JRF7-liSfOrwHbQl1tsrAA8C-K7jbGnKcDSJMfmzt5bYJLmDGUDLk07KvPGA/exec";
+
+  const sendToGoogleAppsScript = async (formData, type) => {
+    const fileToBase64 = (file) =>
+      new Promise((resolve, reject) => {
+        if (!file) return resolve(null);
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = (err) => reject(err);
+        reader.readAsDataURL(file);
+      });
+
+    const resumeBase64 = formData.resumeFile
+      ? await fileToBase64(formData.resumeFile)
+      : null;
+
+    const payload =
+      type === "jobseeker"
+        ? {
+            type: "job-seeker",
+            full_name: formData.fullName,
+            email: formData.email,
+            phone: formData.mobileNumber,
+            number: formData.mobileNumber,
+            current_location: formData.currentLocation,
+            location: formData.currentLocation,
+            visa_type: formData.currentVisaType,
+            job_type: formData.jobTypeSeeker,
+            message: formData.message,
+            industry: formData.industryExperience,
+            experience_years: formData.yearsOfExperience,
+            resume_file: formData.resumeFile ? formData.resumeFile.name : "",
+            resume_file_base64: resumeBase64 || "",
+          }
+        : {
+            type: "post-job",
+            company_name: formData.companyName,
+            trading_name: formData.tradingName,
+            industry: formData.industry,
+            website: formData.companyWebsite,
+            business_location: formData.companyLocation,
+            full_name: formData.fullName,
+            job_title_contact: formData.contactJobTitle,
+            email: formData.email,
+            phone: formData.mobileNumber,
+            position_title: formData.positionTitle,
+            staff_required: formData.numberOfStaff,
+            service: formData.serviceTypes.join(", "),
+            job_type: formData.jobType,
+            salary_range: formData.salaryRange,
+            work_location: formData.workLocation,
+            start_date: formData.startDate,
+            skills: formData.keySkills,
+            requirements: formData.mandatoryRequirements.join(", "),
+            additional_notes: formData.additionalNote,
+          };
+
+    const body = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => {
+      body.append(key, value ?? "");
+    });
+
+    try {
+      const response = await fetch(GAS_WEB_APP_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body,
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      const text = await response.text();
+      console.log(text);
+      return { success: true };
+    } catch (err) {
+      console.error("Primary submission failed:", err);
+
+      try {
+        await fetch(GAS_WEB_APP_URL, {
+          method: "POST",
+          mode: "no-cors",
+          body,
+        });
+
+        return { noCorsFallback: true };
+      } catch (fallbackErr) {
+        console.error("Fallback submission failed:", fallbackErr);
+        return { error: true };
+      }
+    }
+  };
+
+  const handleSubmit = async (e, type) => {
+    e.preventDefault();
+    const updatedSubmissions = [...submissions, { ...form, type }];
+    setSubmissions(updatedSubmissions);
+
+    try {
+      const result = await sendToGoogleAppsScript(form, type);
+      if (result.skipped) {
+        window.alert("Submission saved locally. External submission skipped.");
+      } else if (result.error) {
+        window.alert(
+          "Submission complete, but external submission failed. Check your Google Apps Script deployment.",
+        );
+      } else if (result.noCorsFallback) {
+        window.alert(
+          "Submission complete. External submission attempted with no-cors fallback.",
+        );
+      } else {
+        window.alert("Submission complete.");
+      }
+    } catch {
+      window.alert("Submission complete. Google Sheets update failed.");
+    }
+
+    setForm(initialForm);
+    closeModal();
+  };
+
+  return {
+    open,
+    modalType,
+    openModal,
+    closeModal,
+    form,
+    onChange,
+    toggleArrayValue,
+    handleSubmit,
+    submissions,
+  };
+}
+
 const Healthcare = () => {
   const url = "https://jobsnvisa.com.au/healthcare/";
+  const {
+    open,
+    modalType,
+    openModal,
+    closeModal,
+    form,
+    onChange,
+    toggleArrayValue,
+    handleSubmit,
+  } = useHeroForm();
 
   const healthcareJobs = [
     {
@@ -46,7 +268,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17663858655000124369xpA",
       contactEmail: "info@jobsnvisa.com.au",
@@ -81,7 +304,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17661356115550124369JXN",
       contactEmail: "info@jobsnvisa.com.au",
@@ -111,7 +335,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17852180728210124369mcy",
       contactEmail: "info@jobsnvisa.com.au",
@@ -141,7 +366,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17852183728500124369hbC",
       contactEmail: "info@jobsnvisa.com.au",
@@ -176,7 +402,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17847149796730124369xPW",
       contactEmail: "info@jobsnvisa.com.au",
@@ -211,7 +438,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17852186501750124369TUO",
       contactEmail: "info@jobsnvisa.com.au",
@@ -246,7 +474,8 @@ const Healthcare = () => {
       highlights: [
         "View Role Details",
         "Check Eligibility",
-        "Apply or Enquire",
+        "Employee",
+        "Employer",
       ],
       applyUrl: "https://recruitcrm.io/apply/17646829951890124369zbW",
       contactEmail: "info@jobsnvisa.com.au",
@@ -328,7 +557,465 @@ const Healthcare = () => {
         <meta property="twitter:description" content="Explore healthcare job opportunities in Australia with Jobs N Visa. Find roles for nurses, lab technologists, and other healthcare professionals." />
         <meta property="twitter:image" content="https://jobsnvisa.com.au/assets/Occupational Therapist.jpg" />
       </Helmet>
-      <section className="max-w-[1420px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
+
+      {open && modalType === "jobseeker" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6">
+          <div className="bg-white rounded-[32px] shadow-xl w-full max-w-[980px] p-6 relative max-h-[90vh] overflow-hidden">
+            <button
+              className="absolute top-5 right-5 text-slate-500 hover:text-slate-900"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+            <div className="text-center">
+              <h2 className="text-green-700 font-semibold text-xl">
+                Job Seeker Inquiry
+              </h2>
+              <p className="text-sm text-slate-500 mt-2">
+                Share your details and we'll help you find the right job.
+              </p>
+            </div>
+            <form
+              onSubmit={(e) => handleSubmit(e, modalType)}
+              className="mt-6 space-y-6 overflow-y-auto max-h-[70vh] pr-2"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Basic Details
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        name="fullName"
+                        value={form.fullName}
+                        onChange={onChange}
+                        placeholder="Full Name"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="mobileNumber"
+                        value={form.mobileNumber}
+                        onChange={onChange}
+                        placeholder="Mobile Number"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="email"
+                        value={form.email}
+                        onChange={onChange}
+                        placeholder="Email"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="currentLocation"
+                        value={form.currentLocation}
+                        onChange={onChange}
+                        placeholder="Current Location (City, Country)"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Upload
+                    </p>
+                    <label
+                      htmlFor="resume-upload"
+                      className="cursor-pointer flex h-[140px] flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-slate-600 text-sm"
+                    >
+                      <span>Resume / CV</span>
+                      <span className="text-xs text-slate-400">
+                        Click to upload or drag and drop
+                      </span>
+                      <span className="text-xs text-slate-400">
+                        PDF, DOC, DOCX
+                      </span>
+                    </label>
+                    <input
+                      id="resume-upload"
+                      type="file"
+                      name="resumeFile"
+                      onChange={onChange}
+                      className="hidden"
+                    />
+                    {form.resumeFile && (
+                      <p className="text-xs text-green-600 mt-2">
+                        {form.resumeFile.name}
+                      </p>
+                    )}
+                  </div>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Work Profile
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        name="currentVisaType"
+                        value={form.currentVisaType}
+                        onChange={onChange}
+                        placeholder="Current Visa Type"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <select
+                        name="jobTypeSeeker"
+                        value={form.jobTypeSeeker}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Select Job Type</option>
+                        <option value="full-time">Full Time</option>
+                        <option value="part-time">Part Time</option>
+                        <option value="contract">Contract</option>
+                        <option value="casual">Casual</option>
+                      </select>
+                      <textarea
+                        name="message"
+                        value={form.message}
+                        onChange={onChange}
+                        placeholder="Write message here..."
+                        className="md:col-span-2 border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full min-h-[120px]"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Experience
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <select
+                        name="industryExperience"
+                        value={form.industryExperience}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Select Industry</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="construction">Construction</option>
+                        <option value="hospitality">Hospitality</option>
+                        <option value="it">IT & Technology</option>
+                      </select>
+                      <select
+                        name="yearsOfExperience"
+                        value={form.yearsOfExperience}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Years Of Experience</option>
+                        <option value="0-1">0 - 1 Years</option>
+                        <option value="1-3">1 - 3 Years</option>
+                        <option value="3-5">3 - 5 Years</option>
+                        <option value="5+">5+ Years</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 bg-green-700 text-white px-8 py-3 rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] font-semibold hover:bg-green-800 transition"
+                >
+                  <img
+                    src={a1}
+                    alt="Arrow icon"
+                    className="w-5 h-5 xl:w-6 xl:h-6"
+                  />
+                  <span>Submit Inquiry</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {open && modalType === "post-job" && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6">
+          <div className="bg-white rounded-[32px] shadow-xl w-full max-w-[980px] p-6 relative max-h-[90vh] overflow-hidden">
+            <button
+              className="absolute top-5 right-5 text-slate-500 hover:text-slate-900"
+              onClick={closeModal}
+            >
+              ✕
+            </button>
+            <div className="text-center">
+              <h2 className="text-green-700 font-semibold text-xl">
+                Recruiter Inquiry
+              </h2>
+              <p className="text-sm text-slate-500 mt-2">
+                Let's connect you with best candidates.
+              </p>
+            </div>
+            <form
+              onSubmit={(e) => handleSubmit(e, modalType)}
+              className="mt-6 space-y-6 overflow-y-auto max-h-[70vh] pr-2"
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Company Information
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        name="companyName"
+                        value={form.companyName}
+                        onChange={onChange}
+                        placeholder="Company Name"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="tradingName"
+                        value={form.tradingName}
+                        onChange={onChange}
+                        placeholder="Trading Name (If Any)"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="companyLocation"
+                        value={form.companyLocation}
+                        onChange={onChange}
+                        placeholder="Company Location"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <select
+                        name="industry"
+                        value={form.industry}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Select Industry</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="construction">Construction</option>
+                        <option value="hospitality">Hospitality</option>
+                        <option value="it">IT & Technology</option>
+                      </select>
+                      <input
+                        name="companyWebsite"
+                        value={form.companyWebsite}
+                        onChange={onChange}
+                        placeholder="Company Website"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full md:col-span-2"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Type of Service Required
+                    </p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-slate-50 border border-slate-200 rounded-xl p-4">
+                      {[
+                        "Labour Hire (Casual / Temporary)",
+                        "Contract Staff",
+                        "Permanent Recruitment",
+                        "Payroll / Workforce Management",
+                        "Multiple Services",
+                      ].map((label) => (
+                        <label
+                          key={label}
+                          className="flex items-center gap-2 text-sm text-slate-700"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={form.serviceTypes.includes(label)}
+                            onChange={() =>
+                              toggleArrayValue("serviceTypes", label)
+                            }
+                            className="h-4 w-4 rounded border-slate-300"
+                          />
+                          {label}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Contact Person Details
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        name="fullName"
+                        value={form.fullName}
+                        onChange={onChange}
+                        placeholder="Full Name"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="contactJobTitle"
+                        value={form.contactJobTitle}
+                        onChange={onChange}
+                        placeholder="Job Title"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="email"
+                        value={form.email}
+                        onChange={onChange}
+                        placeholder="Email"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="mobileNumber"
+                        value={form.mobileNumber}
+                        onChange={onChange}
+                        placeholder="Mobile Number"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-green-700 mb-3">
+                      Hiring Requirement Details
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <input
+                        name="positionTitle"
+                        value={form.positionTitle}
+                        onChange={onChange}
+                        placeholder="Position / Job Title"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <input
+                        name="numberOfStaff"
+                        value={form.numberOfStaff}
+                        onChange={onChange}
+                        placeholder="Number Of Staff"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <select
+                        name="jobType"
+                        value={form.jobType}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Job Type Looking For</option>
+                        <option value="full-time">Full Time</option>
+                        <option value="part-time">Part Time</option>
+                        <option value="contract">Contract</option>
+                        <option value="casual">Casual</option>
+                      </select>
+                      <select
+                        name="salaryRange"
+                        value={form.salaryRange}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Salary Range</option>
+                        <option value="40k-60k">40k - 60k</option>
+                        <option value="60k-80k">60k - 80k</option>
+                        <option value="80k+">80k+</option>
+                      </select>
+                      <input
+                        name="workLocation"
+                        value={form.workLocation}
+                        onChange={onChange}
+                        placeholder="Work Location"
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      />
+                      <select
+                        name="startDate"
+                        value={form.startDate}
+                        onChange={onChange}
+                        className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full"
+                      >
+                        <option value="">Start Date</option>
+                        <option value="immediately">Immediately</option>
+                        <option value="1-2 weeks">1 - 2 Weeks</option>
+                        <option value="1 month">1 Month</option>
+                        <option value="flexible">Flexible</option>
+                      </select>
+                      <textarea
+                        name="keySkills"
+                        value={form.keySkills}
+                        onChange={onChange}
+                        placeholder="Key Skills / Experience Required"
+                        className="md:col-span-2 border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full min-h-[100px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-sm font-semibold text-green-700 mb-3">
+                    Mandatory Requirements
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 bg-slate-50 border border-slate-200 rounded-xl p-4">
+                    {[
+                      "White Card",
+                      "Trade Licence",
+                      "Police Check",
+                      "Medical / Drug Test",
+                      "Right to Work in Australia",
+                    ].map((label) => (
+                      <label
+                        key={label}
+                        className="flex items-center gap-2 text-sm text-slate-700"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={form.mandatoryRequirements.includes(label)}
+                          onChange={() =>
+                            toggleArrayValue("mandatoryRequirements", label)
+                          }
+                          className="h-4 w-4 rounded border-slate-300"
+                        />
+                        {label}
+                      </label>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-green-700 mb-3">
+                    Additional Note
+                  </p>
+                  <textarea
+                    name="additionalNote"
+                    value={form.additionalNote}
+                    onChange={onChange}
+                    placeholder="Any Additional Information?"
+                    className="border border-slate-200 bg-slate-50 text-black p-3 rounded-lg text-sm w-full min-h-[160px]"
+                  />
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <label className="flex items-start gap-2 text-sm text-slate-700">
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={form.consent}
+                    onChange={onChange}
+                    className="mt-1 h-4 w-4 rounded border-slate-300"
+                  />
+                  <span>
+                    I consent to JobsNvisa collecting and using my information
+                    to process this enquiry.
+                  </span>
+                </label>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  type="submit"
+                  className="inline-flex items-center gap-2 bg-green-700 text-white px-8 py-3 rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] font-semibold hover:bg-green-800 transition"
+                >
+                  <img
+                    src={a1}
+                    alt="Arrow icon"
+                    className="w-5 h-5 xl:w-6 xl:h-6"
+                  />
+                  <span>Submit Inquiry</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      <section className="max-w-[1440px] mx-auto px-4 pt-6 md:pt-10 pb-12 overflow-x-hidden">
         {/* Header Banner */}
         <div className="flex flex-col items-center text-center mt-6 xl:mt-24">
           <div className="relative w-full max-w-[1300px] mx-auto overflow-hidden bg-green-200 rounded-[30px] md:rounded-[60px] px-6 mt-20 xl:mt-8 md:mt-14 md:px-12 py-8 md:py-10">
@@ -514,45 +1201,89 @@ const Healthcare = () => {
             </div>
           )}
 
-          {/* Cards Stack */}
-          <div className="space-y-8 xl:space-y-14 mt-14  xl:mt-14 flex flex-col items-center">
+                    {/* Cards Stack */}
+          <div className="space-y-8 xl:space-y-14 mt-14 xl:mt-14 flex flex-col items-center">
             {filteredJobs.map((job, index) => (
               <div
                 key={index}
                 className="
-              /* Mobile / Tablet Styles */
-              w-full max-w-[700px] rounded-[30px] p-6 bg-slate-50 shadow-xl flex flex-col items-center overflow-hidden
-              /* Desktop Styles (Unchanged) */
-              xl:max-w-none xl:w-[1350px] xl:h-[680px] xl:w-[1300px] xl:h-[650px] xl:rounded-[70px] xl:p-0  xl:flex-row
-            "
+                  w-full
+                  max-w-[700px]
+                  rounded-[30px]
+                  p-6
+                  bg-slate-50
+                  shadow-xl
+                  flex
+                  flex-col
+                  items-center
+                  overflow-hidden
+                  xl:max-w-none
+                  xl:w-[1400px]
+                  xl:h-[650px]
+                  xl:rounded-[70px]
+                  xl:p-0
+                  xl:flex-row
+                "
               >
                 {/* Left Card Image Section */}
                 <div
                   className="
-                /* Mobile / Tablet Styles */
-                relative w-full max-w-[280px] sm:max-w-[320px] h-auto bg-green-200 rounded-[30px] p-4 flex flex-col items-center mt-6
-                /* Desktop Styles (Unchanged) */
-                xl:max-w-none xl:w-[335px] xl:h-[420px] xl:ml-[81px] xl:mt-[81px] xl:rounded-[45px] xl:p-0 xl:block
-              "
+                    relative
+                    w-full
+                    max-w-[280px]
+                    sm:max-w-[320px]
+                    h-auto
+                    bg-green-200
+                    rounded-[30px]
+                    p-4
+                    flex
+                    flex-col
+                    items-center
+                    mt-6
+                    xl:max-w-none
+                    xl:w-[335px]
+                    xl:h-[420px]
+                    xl:ml-[81px]
+                    xl:mt-[81px]
+                    xl:rounded-[45px]
+                    xl:p-0
+                    xl:block
+                  "
                 >
                   <img
                     src={job.image}
                     alt={job.title}
                     className="
-                  /* Mobile / Tablet Styles */
-                  w-full h-[260px] sm:h-[300px] object-cover rounded-[25px] -mt-10 shadow-md
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[334px] xl:h-[393px] xl:rounded-[30px] xl:ml-[-40px] xl:mt-[-30px] xl:shadow-none
-                "
+                      w-full
+                      h-[260px]
+                      sm:h-[300px]
+                      object-cover
+                      rounded-[25px]
+                      -mt-10
+                      shadow-md
+                      xl:w-[334px]
+                      xl:h-[393px]
+                      xl:rounded-[30px]
+                      xl:ml-[-40px]
+                      xl:mt-[-30px]
+                      xl:shadow-none
+                    "
                   />
 
                   <p
                     className="
-                  /* Mobile / Tablet Styles */
-                  text-green-700 text-[18px] sm:text-[20px] font-semibold text-center mt-3
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[250px] xl:h-[30px] xl:mt-3 xl:ml-20 xl:text-left
-                "
+                      text-green-700
+                      text-[18px]
+                      sm:text-[20px]
+                      font-semibold
+                      text-center
+                      mt-3
+                      xl:w-[250px]
+                      xl:h-[30px]
+                      xl:mt-3
+                      xl:ml-20
+                      xl:text-left
+                    "
                   >
                     {job.category}
                   </p>
@@ -563,11 +1294,20 @@ const Healthcare = () => {
                   {/* Job Title */}
                   <p
                     className="
-                  /* Mobile / Tablet Styles */
-                  text-green-700 text-[22px] sm:text-[26px] font-semibold text-center mt-6 xl:mt-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[800px] xl:h-[45px] xl:mt-[40px] xl:ml-[50px] xl:text-[30px] xl:text-left
-                "
+                      text-green-700
+                      text-[22px]
+                      sm:text-[26px]
+                      font-semibold
+                      text-center
+                      mt-6
+                      xl:mt-0
+                      xl:w-[800px]
+                      xl:h-[45px]
+                      xl:mt-[40px]
+                      xl:ml-[50px]
+                      xl:text-[30px]
+                      xl:text-left
+                    "
                   >
                     {job.title}
                   </p>
@@ -575,34 +1315,51 @@ const Healthcare = () => {
                   {/* Job Description */}
                   <p
                     className="
-                  /* Mobile / Tablet Styles */
-                  text-slate-500 text-[14px] sm:text-[16px] text-center xl:text-left mt-3 px-2 xl:px-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[751px] xl:h-[87px] xl:mt-[20px] xl:ml-[50px]
-                "
+                      text-slate-500
+                      text-[14px]
+                      sm:text-[16px]
+                      text-center
+                      xl:text-left
+                      mt-3
+                      px-2
+                      xl:px-0
+                      xl:w-[800px]
+                      xl:h-[87px]
+                      xl:mt-[20px]
+                      xl:ml-[50px]
+                    "
                   >
                     {job.description}
                   </p>
 
-                  {/* Divider Line */}
-                  <div className="w-full max-w-[90%] xl:w-[750px] my-4 xl:my-0 xl:mt-[-10px] xl:ml-[50px] border border-slate-300"></div>
+                  {/* Divider */}
+                  <div className="w-full max-w-[90%] xl:w-[800px] my-4 xl:my-0 xl:mt-[-10px] xl:ml-[50px] border border-slate-300"></div>
 
                   {/* Job Info Bar */}
                   <div
                     className="
-                  /* Mobile / Tablet Styles */
-                  w-full grid grid-cols-1 sm:grid-cols-3 gap-4 py-4 xl:py-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:flex xl:items-center xl:justify-between xl:pt-6
-                "
+                      w-full
+                      grid
+                      grid-cols-1
+                      sm:grid-cols-3
+                      gap-4
+                      py-4
+                      xl:py-0
+                      xl:flex
+                      xl:items-center
+                      xl:justify-between
+                      xl:pt-6
+                    "
                   >
                     {/* Job Type */}
                     <div className="flex items-center justify-center xl:justify-start gap-3 xl:ml-[80px]">
                       <LuClock3 className="w-6 h-6 xl:w-7 xl:h-7 text-[#009A44] flex-shrink-0" />
+
                       <div>
                         <p className="text-[14px] xl:text-[16px] text-slate-600">
                           Job Type
                         </p>
+
                         <p className="text-[16px] xl:text-[18px] font-semibold text-slate-800">
                           {job.jobType}
                         </p>
@@ -614,10 +1371,12 @@ const Healthcare = () => {
                     {/* Experience */}
                     <div className="flex items-center justify-center xl:justify-start gap-3 xl:mr-[40px]">
                       <LuBriefcase className="w-6 h-6 xl:w-7 xl:h-7 text-[#009A44] flex-shrink-0" />
+
                       <div>
                         <p className="text-[14px] xl:text-[16px] text-slate-600">
                           Experience
                         </p>
+
                         <p className="text-[16px] xl:text-[18px] font-semibold text-slate-800">
                           {job.experience}
                         </p>
@@ -629,10 +1388,12 @@ const Healthcare = () => {
                     {/* Location */}
                     <div className="flex items-center justify-center xl:justify-start gap-3 xl:mr-[60px]">
                       <LuMapPin className="w-6 h-6 xl:w-7 xl:h-7 text-[#009A44] flex-shrink-0" />
+
                       <div>
                         <p className="text-[14px] xl:text-[16px] text-slate-600">
                           Location
                         </p>
+
                         <p className="text-[16px] xl:text-[18px] font-semibold text-slate-800">
                           {job.location}
                         </p>
@@ -643,16 +1404,25 @@ const Healthcare = () => {
                   {/* Responsibilities & Qualifications */}
                   <div
                     className="
-                  /* Mobile / Tablet Styles */
-                  w-full flex flex-col sm:flex-row justify-between gap-6 mt-6 xl:mt-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[725px] xl:mt-[38px] xl:ml-[50px]
-                "
+                      w-full
+                      flex
+                      flex-col
+                      sm:flex-row
+                      justify-between
+                      gap-6
+                      mt-6
+                      xl:mt-0
+                      xl:w-[800px]
+                      xl:mt-[38px]
+                      xl:ml-[50px]
+                    "
                   >
+                    {/* Responsibilities */}
                     <div className="w-full sm:w-[48%] xl:w-[340px]">
                       <h3 className="text-[18px] xl:text-[20px] font-semibold text-[#00A651] mb-2 xl:mb-3">
                         Key Responsibilities
                       </h3>
+
                       <ul className="list-disc pl-5 text-[14px] xl:text-[16px] text-slate-600 space-y-1 xl:space-y-2">
                         {job.responsibilities.map((item, i) => (
                           <li key={i}>{item}</li>
@@ -660,10 +1430,12 @@ const Healthcare = () => {
                       </ul>
                     </div>
 
+                    {/* Qualifications */}
                     <div className="w-full sm:w-[48%] xl:w-[320px]">
                       <h3 className="text-[18px] xl:text-[20px] font-semibold text-[#00A651] mb-2 xl:mb-3">
                         Qualifications
                       </h3>
+
                       <ul className="list-disc pl-5 text-[14px] xl:text-[16px] text-slate-600 space-y-1 xl:space-y-2">
                         {job.qualifications.map((item, i) => (
                           <li key={i}>{item}</li>
@@ -677,7 +1449,17 @@ const Healthcare = () => {
                     {job.skills.map((skill, i) => (
                       <div
                         key={i}
-                        className="flex-1 h-[45px] bg-slate-200 rounded-[14px] flex items-center justify-center"
+                        className="
+                          flex-1
+                          min-w-[120px]
+                          h-[45px]
+                          bg-slate-200
+                          rounded-[14px]
+                          flex
+                          items-center
+                          justify-center
+                          px-2
+                        "
                       >
                         <p className="text-[15px] text-green-700 font-semibold text-center">
                           {skill}
@@ -687,101 +1469,196 @@ const Healthcare = () => {
                   </div>
 
                   {/* Highlights Section */}
-                  <div
-                    className="
-                  /* Mobile / Tablet Styles */
-                  w-full flex flex-col sm:flex-row justify-center xl:justify-between gap-4 sm:gap-4 mt-6 xl:mt-0
-                  /* Desktop Styles (Unchanged) */
-                  xl:w-[750px] xl:mt-[25px] xl:ml-[28px] xl:gap-3
-                "
-                  >
-                    {/* Highlight 1 */}
-                    <div
-                      onClick={() =>
-                        alert(
-                          `${job.title}\n\nRole Details:\n${job.description}\n\nCategory: ${job.category}\nLocation: ${job.location}\nExperience: ${job.experience}`,
-                        )
-                      }
-                      className="
-                    /* Mobile / Tablet Styles */
-                    w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-700 hover:bg-green-100 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
-                    /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:px-8 xl:gap-1
-                  "
-                    >
-                      <RiUserSettingsLine className="w-6 h-6 xl:w-10 xl:h-6 text-white group-hover:text-green-900 flex-shrink-0" />
-                      <p className="text-[14px] xl:text-[16px] text-white group-hover:text-green-900 font-bold truncate xl:w-[180px]">
-                        {job.highlights[0]}
-                      </p>
-                    </div>
+                 <div className="w-full mt-6 xl:mt-0 xl:mt-[25px] xl:ml-[30px]">
+  <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 w-full max-w-[1000px]">
+    
+    {/* Highlight 1 - View Role Details */}
+    <button
+      type="button"
+      onClick={() =>
+        window.alert(
+          `${job.title}\n\nRole Details:\n${job.description}\n\nCategory: ${job.category}\nLocation: ${job.location}\nExperience: ${job.experience}`
+        )
+      }
+      className="
+        w-full
+        h-12
+        rounded-tl-xl rounded-tr-xl rounded-bl-xl
+        bg-green-700
+        hover:bg-green-100
+        px-4
+        flex
+        items-center
+        justify-center
+        gap-2
+        cursor-pointer
+        group
+        transition-colors
+        duration-200
+      "
+    >
+      <RiUserSettingsLine
+        className="
+          w-5 h-5
+          text-white
+          group-hover:text-green-900
+          flex-shrink-0
+          transition-colors
+        "
+      />
+      <span
+        className="
+          text-sm xl:text-base
+          text-white
+          group-hover:text-green-900
+          font-bold
+          truncate
+          transition-colors
+        "
+      >
+        {job.highlights[0]}
+      </span>
+    </button>
 
-                    {/* Highlight 2 */}
-                    <div
-                      onClick={() =>
-                        alert(
-                          `Eligibility Check for ${job.title}\n\nRequired Qualifications:\n${job.qualifications.join("\n")}\n\nRequired Skills:\n${job.skills.join("\n")}`,
-                        )
-                      }
-                      className="
-                    /* Mobile / Tablet Styles */
-                    w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-100 hover:bg-green-700 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
-                    /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:gap-3 xl:px-8
-                  "
-                    >
-                      <FaRegCheckCircle className="w-5 h-5 xl:w-6 xl:h-6 text-green-900 group-hover:text-white flex-shrink-0" />
-                      <span className="text-[14px] xl:text-[16px] group-hover:text-white text-green-900 font-bold truncate xl:w-[180px]">
-                        {job.highlights[1]}
-                      </span>
-                    </div>
+    {/* Highlight 2 - Check Eligibility */}
+    <button
+      type="button"
+      onClick={() =>
+        window.alert(
+          `Eligibility Check for ${job.title}\n\nRequired Qualifications:\n${job.qualifications.join(
+            "\n"
+          )}\n\nRequired Skills:\n${job.skills.join("\n")}`
+        )
+      }
+      className="
+        w-full
+        h-12
+        rounded-tl-xl rounded-tr-xl rounded-bl-xl
+        bg-green-100
+        hover:bg-green-700
+        px-4
+        flex
+        items-center
+        justify-center
+        gap-2
+        cursor-pointer
+        group
+        transition-colors
+        duration-200
+      "
+    >
+      <FaRegCheckCircle
+        className="
+          w-5 h-5
+          text-green-900
+          group-hover:text-white
+          flex-shrink-0
+          transition-colors
+        "
+      />
+      <span
+        className="
+          text-sm xl:text-base
+          text-green-900
+          group-hover:text-white
+          font-bold
+          truncate
+          transition-colors
+        "
+      >
+        {job.highlights[1]}
+      </span>
+    </button>
 
-                    {/* Highlight 3 */}
-                    <div
-                      onClick={() => {
-                        const msg = `Apply for ${job.title}\n\nURL: ${job.applyUrl}\nEmail: ${job.contactEmail}\nPhone: ${job.contactPhone}\n\nClick OK to open the application form`;
-                        if (window.confirm(msg)) {
-                          window.open(
-                            job.applyUrl,
-                            "_blank",
-                            "noopener,noreferrer",
-                          );
-                        }
-                      }}
-                      onMouseEnter={(e) => {
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          img.style.filter =
-                            "brightness(0) saturate(100%) invert(100%)";
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        const img = e.currentTarget.querySelector("img");
-                        if (img) {
-                          img.style.filter =
-                            "brightness(0) saturate(100%) invert(20%) sepia(34%) saturate(1320%) hue-rotate(96deg) brightness(92%) contrast(94%)";
-                        }
-                      }}
-                      className="
-                    /* Mobile / Tablet Styles */
-                    w-full sm:w-1/3 h-[44px] rounded-tl-[12px] rounded-tr-[12px] rounded-bl-[12px] bg-green-100 hover:bg-green-700 px-4 py-3 flex items-center justify-center gap-1 cursor-pointer group
-                    /* Desktop Styles (Unchanged) */
-                    xl:w-[250px] xl:gap-3 xl:px-6
-                  "
-                    >
-                      <img
-                        src={a1}
-                        alt=""
-                        className="w-5 h-5 xl:w-6 xl:h-6 xl:mt-1 text-green-900 flex-shrink-0"
-                        style={{
-                          filter:
-                            "brightness(0) saturate(100%) invert(20%) sepia(34%) saturate(1320%) hue-rotate(96deg) brightness(92%) contrast(94%)",
-                        }}
-                      />
-                      <span className="text-[14px] xl:text-[16px] group-hover:text-white text-green-900 font-bold truncate xl:w-[180px]">
-                        {job.highlights[2]}
-                      </span>
-                    </div>
-                  </div>
+    {/* Highlight 3 - Employee */}
+    <button
+      type="button"
+      onClick={() => openModal("jobseeker")}
+      className="
+        w-full
+        h-12
+        rounded-tl-xl rounded-tr-xl rounded-bl-xl
+        bg-green-700
+        hover:bg-green-100
+        px-4
+        flex
+        items-center
+        justify-center
+        gap-2
+        cursor-pointer
+        group
+        transition-colors
+        duration-200
+      "
+    >
+        <RiFileUserLine
+        className="
+          w-5 h-5
+          text-white
+          group-hover:text-green-900
+          flex-shrink-0
+          transition-colors
+        "
+      />
+      <span
+        className="
+          text-sm xl:text-base
+          text-white
+          group-hover:text-green-900
+          font-bold
+          truncate
+          transition-colors
+        "
+      >
+        {job.highlights[2]}
+      </span>
+    </button>
+
+    {/* Highlight 4 - Employer */}
+    <button
+      type="button"
+      onClick={() => openModal("post-job")}
+      className="
+        w-full
+        h-12
+        rounded-tl-xl rounded-tr-xl rounded-bl-xl
+        bg-green-100
+        hover:bg-green-700
+        px-4
+        flex
+        items-center
+        justify-center
+        gap-2
+        cursor-pointer
+        group
+        transition-colors
+        duration-200
+      "
+    >
+       <MdOutlinePersonSearch
+        className="
+          w-5 h-5
+          text-green-900
+          group-hover:text-white
+          flex-shrink-0
+          transition-colors
+        "
+      />
+      <span
+        className="
+          text-sm xl:text-base
+          text-green-900
+          group-hover:text-white
+          font-bold
+          truncate
+          transition-colors
+        "
+      >
+        {job.highlights[3]}
+      </span>
+    </button>
+  </div>
+</div>
                 </div>
               </div>
             ))}
